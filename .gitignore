@@ -1,0 +1,10 @@
+.cache
+undotree
+trasient
+auto-save-list
+smex-items
+recentf
+projectile-*
+keymap.html
+.lsp-session*
+elpa
