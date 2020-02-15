@@ -46,7 +46,7 @@
 (require 'init-ido)
 (require 'init-project)
 (require 'init-restclient)
-(require 'init-zoom)
+;; (require 'init-zoom)
 
 ;; text
 (require 'init-markdown)

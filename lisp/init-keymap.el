@@ -82,6 +82,7 @@
   "fm" '(helm-mini :wk "helm mini")
   "fo" '(helm-occur :wk "helm occur")
   "fi" '(helm-register :wk "helm register")
+  "fz" '(zoom :wk "font zoom")
   )
 
 ;; help
@@ -195,5 +196,12 @@
   "sp" '(helm-ag-project-root :wk "search in git repo")
   "sr" '(ag-regexp :wk "search regexp"))
 
+;; yasnippet
+(leader-key "y" '(:wk "yasnippet")
+  "yw" '(aya-create :wk "create")
+  "yy" '(aya-expand :wk "expand")
+  "yl" '(aya-open-line :wk "open line"))
+
 (provide 'init-keymap)
+
 ;;; init-keymap.el ends here

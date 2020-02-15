@@ -13,7 +13,6 @@
 (use-package json
   :ensure t)
 
-
 ;; @see https://github.com/nicferrier/elnode
 (use-package elnode
   :ensure t)
