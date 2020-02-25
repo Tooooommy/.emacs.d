@@ -44,7 +44,10 @@
   :ensure t
   :hook (prog-mode . super-save-mode)
   :config 
-  (setq super-save-auto-save-when-idle t))
+  (setq auto-save-default nil
+        auto-save-interval 100
+        super-save-idle-duration 1
+        super-save-auto-save-when-idle t))
 
 ;; @see https://github.com/malabarba/aggressive-indent-mode
 (use-package aggressive-indent
