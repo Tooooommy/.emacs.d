@@ -1,7 +1,8 @@
 ;; @see https://github.com/dominikh/yasnippet-go
 ;; @see mhttps://github.com/dominikh/go-mode.el
 (use-package go-mode
-  :ensure t 
+  :ensure t
+  :after evil-mode
   :mode ("//.go//'" . go-mode)
   :hook (go-mode . (lambda() 
                      (lsp-deferred)

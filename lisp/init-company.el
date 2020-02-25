@@ -34,15 +34,6 @@
 	company-dabbrev-ignore-case nil
 	company-dabbrev-downcase nil)
 
-  ;; @see https://github.com/tigersoldier/company-lsp
-  (use-package company-lsp
-    :ensure t
-    :init (push 'company-lsp company-backends)
-    :config
-    (company-lsp--cache-item-candidates 'auto)
-    (setq company-lsp-async t
-          company-lsp-enable-snippet t
-          company-lsp-enable-recompletion t))
 
   ;; @see https://github.com/raxod502/prescient.el
   (use-package company-prescient

@@ -49,7 +49,7 @@
         treemacs-tag-follow-delay              1.5
         treemacs-width                         35)
 
-  (treemacs-resize-icons 16)
+  ;;(treemacs-resize-icons 16)
   (treemacs-follow-mode t)
   (treemacs-filewatch-mode t)
   (treemacs-fringe-indicator-mode t)

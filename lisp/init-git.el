@@ -2,6 +2,8 @@
 (use-package magit
   :ensure t
   :defer t
+  :mode (("\\COMMIT_EDITMSG" . text-mode)
+         ("\\MERGE_MSG" . text-mode))
   :bind
   (("C-x g" . magit-status)
    ("C-x M-g" . magit-dispatch)
@@ -47,12 +49,13 @@
            ("p" . git-messenger:popup-message)
            :map git-messenger-map
            ("m" . git-messenger:copy-message))
-    :init (setq git-messenger:use-magit-popup t))
+    :init (setq git-messenger:use-magit-popup t)))
 
-  ;; @see https://github.com/dgutov/diff-hl
-  (use-package diff-hl
-    :ensure t 
-    :init (global-diff-hl-mode t)))
+;; @see https://github.com/dgutov/diff-hl
+(use-package diff-hl
+  :ensure t
+  :hook((after-init . global-diff-hl-mode)
+        (dired-mode . diff-hl-mode)))
 
 (provide 'init-git)
 

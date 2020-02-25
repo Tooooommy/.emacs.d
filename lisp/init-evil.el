@@ -6,7 +6,12 @@
   :hook (after-init . evil-mode)
   :bind (:map evil-motion-state-map ("C-u" . scroll-down-command)
          :map evil-insert-state-map ([escape] . evil-normal-state))
+
   :config 
+  (evil-define-key 'normal go-mode-map "gd" 'godef-jump)
+  (evil-define-key 'normal go-mode-map "gp" 'godef-describe)
+  (evil-define-key 'normal go-mode-map "go" 'godef-jump-other-window)
+
   (setq evil-emacs-state-cursor '("red" box)
         evil-normal-state-cursor '("green" box)
         evil-visual-state-cursor '("orange" box)
@@ -42,8 +47,7 @@
     :demand t
     :after evil
     :bind ("C-g" . evil-escape)
-    :init
-    (evil-escape-mode +1)
+    :init (evil-escape-mode +1)
     :config (progn
               (setq-default evil-escape-exclude-states '(normal visual multiedit emacs motion))
               (setq-default evil-escape-exclude-major-modes '(neotree-mode))

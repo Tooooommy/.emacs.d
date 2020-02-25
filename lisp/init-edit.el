@@ -1,3 +1,15 @@
+;; ido
+(use-package ido
+  :init (ido-mode 1))
+
+;; @see https://github.com/nonsequitur/smex/
+(use-package smex
+  :ensure t
+  :init (smex-initialize)
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)))
+
 ;; @see https://github.com/technomancy/better-defaults
 (use-package better-defaults
   :ensure t)

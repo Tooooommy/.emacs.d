@@ -42,34 +42,6 @@
 ;; no menu bar
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; @see https://github.com/ema2159/centaur-tabs
-(use-package centaur-tabs
-  :ensure t
-  :after evil
-  :init (centaur-tabs-mode t)
-  :bind (:map evil-normal-state-map
-         ("g t" . centaur-tabs-forward)
-         ("g T" . centaur-tabs-backward))
-  :config
-  (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
-  (setq
-   centaur-tabs-style "box"
-   centaur-tabs-height 25
-   centaur-tabs-set-icons t
-   centaur-tabs-set-modified-marker t
-   centaur-tabs-gray-out-icons 'buffer
-   centaur-tabs-set-bar 'left
-   x-underline-at-descent-line t
-   centaur-tabs-set-close-button "X"
-   uniquify-separator "/"
-   uniquify-buffer-name-style 'forward
-   centaur-tabs-cycle-scope 'tabs
-   centaur-tabs-adjust-buffer-order t)
-  (centaur-tabs-headline-match)
-  (centaur-tabs-group-by-projectile-project)
-  (centaur-tabs-group-buffer-groups))
-
-
 ;; @see https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
   :ensure t
