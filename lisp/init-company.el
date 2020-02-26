@@ -41,15 +41,6 @@
     :init (company-prescient-mode 1)
     :hook (company-mode . company-prescient-mode))
 
-  ;; ;; @see https://github.com/sebastiencs/company-box
-  ;; (use-package company-box
-  ;;   :ensure t
-  ;;   :hook (company-mode . company-box-mode)
-  ;;   :init (setq company-box-backends-colors nil
-  ;;               company-box-show-single-candidate t
-  ;;               company-box-max-candidates 50
-  ;;               company-box-doc-delay 0.5))
-
   ;; @see https://github.com/expez/company-quickhelp
   (use-package company-quickhelp
     :ensure t 

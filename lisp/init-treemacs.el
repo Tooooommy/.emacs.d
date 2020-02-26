@@ -1,8 +1,3 @@
-;; @see https://github.com/deb0ch/emacs-winum
-(use-package winum
-  :ensure t
-  :config (winum-mode t))
-
 ;; @see https://github.com/Alexander-Miller/treemacs
 (use-package treemacs
   :ensure t
@@ -11,9 +6,7 @@
              treemacs-filewatch-mode
              treemacs-fringe-indicator-mode
              treemacs-git-mode)
-  :init
-  (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :bind ("M-0" . treemacs-select-window)
   :config 
   (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
         treemacs-deferred-git-apply-delay      0.5
@@ -69,7 +62,7 @@
   (use-package treemacs-icons-dired
     :ensure t
     :after treemacs dired
-    :config (treemacs-icons-dired-mode))
+    :hook (after-init . treemacs-icons-dired-mode))
 
   (use-package treemacs-magit
     :ensure t

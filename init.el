@@ -43,7 +43,7 @@
 (require 'init-edit)
 (require 'init-treemacs)
 (require 'init-helm)
-(require 'init-project)
+(require 'init-projectile)
 (require 'init-restclient)
 
 ;; text

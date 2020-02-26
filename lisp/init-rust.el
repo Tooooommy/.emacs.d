@@ -1,8 +1,6 @@
 ;; @see https://github.com/rust-lang/rust-mode
 (use-package rust-mode
   :ensure t
-  :ensure t
-  :mode "\\.rs\\'"
   :init (setq rust-format-on-save t)
   :hook (rust-mode . (lambda () (setq indent-tabs-mode nil)))
   :config 
