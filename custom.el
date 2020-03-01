@@ -11,5 +11,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(lsp-ui-sideline-code-action ((t (:inherit warning))))
  '(macrostep-expansion-highlight-face ((t (:background "#23272e"))))
  '(org-ellipsis ((t (:foreground nil)))))

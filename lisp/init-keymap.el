@@ -44,8 +44,7 @@
   "ci" '(evilnc-quick-comment-or-uncomment-to-the-line :wk "quick")
   "cl" '(evilnc-comment-or-uncomment-to-the-line :wk "line")
   "cp" '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
-  "cr" '(evilnc--comment-or-uncomment-region :wk "region")
-  "c." '(evilnc-copy-and-comment-operator :wk "operator"))
+  "cr" '(comment-or-uncomment-region :wk "region"))
 
 ;; buffers
 (leader-key "b" '(:wk "buffer")
@@ -55,7 +54,7 @@
   "bc" '(evil-buffer-new :wk "create")
   "bd" '(evil-delete-buffer :wk "delete")
   "br" '(rename-buffer :wk "rename")
-  "bn" '(helpers/kill-other-buffer :wk "kill other"))
+  "bm" '(helpers/kill-other-buffer :wk "kill other"))
 
 ;; edit
 (leader-key "e" '(:wk "edit")
@@ -165,6 +164,7 @@
   "mo" '(markdown-export-and-preview :wk "export and preview") ;; output
   "ml" '(markdown-live-preview-mode :wk "preview on buffer") ;; live
   "mm" '(markdown-toc-generate-toc :wk "generate outline")   ;; generate
+
   :keymaps 'go-mode-map ;; golang
   "mh" '(:wk "help")
   "mhh" '(godoc-at-point :wk "godoc at point")
