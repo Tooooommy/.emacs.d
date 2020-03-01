@@ -27,7 +27,7 @@
   :config
   (general-evil-setup)
   (general-create-definer leader-key :prefix "SPC" :states '(normal visual motion) :keymaps 'override :wk "leader"))
-
+  
 ;; emacs key bind like
 (general-define-key [f11] 'helpers/fullscreen)
 (general-define-key "M-x" 'helm-M-x :keymaps 'override) ;; 重新绑定
@@ -131,10 +131,15 @@
   "w8" '(winum-select-window-8 :wk "window 8")
   "w9" '(winum-select-window-9 :wk "window 9"))
 
-;; language
-(leader-key "m" '(:wk "languages")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; language
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; markdown
+(leader-key "m"  '(:wk "language")
   :keymaps '(markdown-mode-map gfm-mode-map) ;; markdown
-  "mi" '(:wk "insert")
+
+  "mi" '(:wk "markdown insert")
   "mia" '(markdown-insert-header :wk "header")
   "mib" '(markdown-insert-bold :wk "bold")
   "mic" '(markdown-insert-code :wk "code") ;;d
@@ -163,35 +168,55 @@
   "me" '(markdown-export :wk "export")
   "mo" '(markdown-export-and-preview :wk "export and preview") ;; output
   "ml" '(markdown-live-preview-mode :wk "preview on buffer") ;; live
-  "mm" '(markdown-toc-generate-toc :wk "generate outline")   ;; generate
+  "mm" '(markdown-toc-generate-toc :wk "generate outline"))   ;; generate
 
+;; golang
+(leader-key "m" '(:wk "language")
   :keymaps 'go-mode-map ;; golang
-  "mh" '(:wk "help")
-  "mhh" '(godoc-at-point :wk "godoc at point")
+
   "mi" '(:wk "import")
-  "mia" '(go-import-add :wk "add import")
   "mig" '(go-goto-imports :wk "goto imports")
+  "mia" '(go-import-add :wk "add import")
   "mir" '(go-remove-unused-imports :wk "remove unused import")
-  "me" '(:wk "execute")
-  "meb" '(go-play-buffer :wk "play buffer")
-  "mer" '(go-play-region :wk "play region")
-  "med" '(go-playground-download :wk "download play")
+
   "mx" '(:wk "action")
   "mxx" '(go-run :wk "run")
+  "mxt" '(go-test-current-test :wk "test")
   "mxf" '(gofmt :wk "format")
-  "mxi" '(go-impl :wk "impl")
-  "mxt" '(go-test--go-test :wk "test")
+  "mxr" '(godoctor-rename :wk "rename")
   "mxc" '(go-coverage :wk "coverage")
+  "mxb" '(go-play-buffer :wk "play buffer")
+  "mxe" '(go-play-region :wk "play region")
+  "mxh" '(godoc-at-point :wk "godoc")
+  "mxi" '(go-impl :wk "impl")
+  "mxs" '(go-fill-struct :wk "fill struct")
+  "mxa" '(go-tag-add :wk "add tag")
+  "mxd" '(go-tag-remove :wk "remove tag")
+  "mxu" '(go-tag-refresh :wk "update tag")
+
+  "mt" '(:wk "test")
+  "mtt" '(go-test-current-test :wk "current test")
+  "mtf" '(go-test-current-file :wk "current file")
+  "mtp" '(go-test-current-project :wk "current project")
+  "mtc" '(go-test-current-coverage :wk "current coverage")
+
+  "mb" '(:wk "benchmark")
+  "mbb" '(go-test-current-benchmark :wk "current benchmark")
+  "mbf" '(go-test-current-file-benchmarks :wk "current benchmark")
+  "mbp" '(go-test-current-project-benchmarks :wk "current project")
+
   "mg" '(:wk "jump")
   "mgg" '(godef-describe :wk "describe")
   "mgj" '(godef-jump :wk "jump")
-  "mgo" '(godef-jump-other-window :wk "jump other window")
-  "mt" '(:wk "test")
-  "md" '(:wk "doctor")
-  "mdr" '(godoctor-rename :wk "rename")
-  "mde" '(godoctor-extract :wk "extract")
-  "mdd" '(godoctor-godoc :wk "document")
-  "mdt" '(godoctor-toggle :wk "toggle"))
+  "mgo" '(godef-jump-other-window :wk "jump other window"))
+
+;; rust
+(leader-key "m" '(:wk "rust")
+  :keymaps 'rust-mode-map
+  "mx" '(:wk "action")
+  "mxx" '(rust-run :wk "run")
+  "mxt" '(rust-test :wk "test")
+  "mxc" '(rust-compile :wk "compile"))
 
 (provide 'init-keymap)
 
