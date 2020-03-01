@@ -24,23 +24,21 @@
              helm-show-kill-ring
              helm-find-files
              helm-register)
-  :bind  (:map helm-map
-          ("<tab>" . helm-execute-persistent-action)
-          ("C-i" . helm-execute-persistent-action)
-          ("C-z" . helm-select-action))
-  :init (helm-mode 1)
-  (setq helm-M-x-fuzzy-match t
-        helm-ff-fuzzy-matching t
-        helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match t
-        helm-mode-fuzzy-match t
-        helm-split-window-in-side-p nil)
+  :init
+  (helm-mode 1)
+  (helm-autoresize-mode t)
   :config
   (require 'helm-config)
-  (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-
-  (when (executable-find "curl")
-    (setq helm-google-suggest-use-curl-p t))
+  (setq helm-candidate-number-limit 100)
+  (setq helm-autoresize-max-height 0
+        helm-autoresize-min-height 30
+        helm-follow-mode-persistent t
+        helm-split-window-inside-p t
+        helm-scroll-amount 8
+        helm-move-to-line-cycle-in-source t
+        helm-display-header-line nil
+        helm-echo-input-in-header-line t
+        helm-input-idle-delay 0.01)
 
   ;; @see https://github.com/PythonNut/helm-flx
   (use-package helm-flx
@@ -77,4 +75,5 @@
 
 (provide 'init-helm)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-helm.el ends here

@@ -19,21 +19,30 @@
 
 ;; @see https://github.com/raxod502/straight.el
 (require-package 'use-package)
+(eval-and-compile
+  (setq use-package-always-ensure t)
+  (setq use-package-always-defer t)
+  (setq use-package-expand-minimally t)
+  (setq use-package-enable-imenu-support t))
+
+;; Update GPG keyring for GNU ELPA
+(use-package gnu-elpa-keyring-update)
 
 ;; @see https://github.com/jwiegley/emacs-async
-(use-package async :ensure t)
+(use-package async)
 
 ;; @see https://github.com/auto-complete/popup-el
-(use-package popup
-  :ensure t)
-
-;; @see https://github.com/dholm/benchmark-init-el
-(use-package benchmark-init
-  :ensure t)
+(use-package popup)
 
 ;; @see https://github.com/domtronn/all-the-icons.el
-(use-package all-the-icons
-  :ensure t)
+(use-package all-the-icons)
+
+;; @see https://github.com/rranelli/auto-package-update.el
+(use-package auto-package-update
+  :init
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-hide-results t)
+  (defalias 'upgrade-packages #'auto-package-update-now))
 
 ;; about tools lib 
 ;; @see https://github.com/magnars/dash.el

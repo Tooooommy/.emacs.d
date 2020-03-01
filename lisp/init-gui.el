@@ -20,14 +20,12 @@
 
 (setq-default initial-scratch-message (show-scratch-buffer-message))
 
-;; @see https://github.com/emacs-dashboard/emacs-dashboard
-
 ;; Suppress GUI features
+(setq use-file-dialog nil
+      use-dialog-box nil
+      inhibit-startup-screen t
+      inhibit-startup-echo-area-message t)
 
-(setq use-file-dialog nil)
-(setq use-dialog-box nil)
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message t)
 (setq line-number-mode t)
 (setq column-number-mode t)
 
@@ -42,6 +40,22 @@
 ;; no menu bar
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+;; Menu/Tool/Scroll bars
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+
+;; Use fixed pitch where it's sensible
+(use-package mixed-pitch
+  :ensure t
+  :diminish)
+
+;; Display dividers between windows
+(setq window-divider-default-places t
+      window-divider-default-bottom-width 1
+      window-divider-default-right-width 1)
+(add-hook 'window-setup-hook #'window-divider-mode)
+
 ;; @see https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
   :ensure t
@@ -49,11 +63,12 @@
   :config
   (setq  
    doom-themes-enable-bold t
-   doom-themes-enable-italic t
-   doom-themes--colors t
-   doom-themes-treemacs-theme t)
+   doom-themes-enable-italic t)
+  ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
+  ;;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
 ;; @see https://github.com/seagle0128/doom-modeline
@@ -74,6 +89,18 @@
         doom-modeline-indent-info nil
         doom-modeline-env-version t))
 
+;; Title
+(setq frame-title-format '("Tommy Emacs - %b")
+      icon-title-format frame-title-format)
+
+;; Inhibit resizing frame
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
+
+;; font 
+(set-frame-font "Source Code Pro 12")
+
 (provide 'init-gui)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-gui.el ends here

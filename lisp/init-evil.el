@@ -62,7 +62,12 @@
     :config
     (evil-define-key 'visual evil-mc-key-map
       "A" #'evil-mc-make-cursor-in-visual-selection-end
-      "I" #'evil-mc-make-cursor-in-visual-selection-beg)))
+      "I" #'evil-mc-make-cursor-in-visual-selection-beg))
+
+  ;; @see ....
+  (use-package treemacs-evil
+    :ensure t
+    :after treemacs evil))
 
 ;; @see https://github.com/emacs-evil/evil-collection
 ;;(use-package evil-collection

@@ -41,11 +41,6 @@
   (helpers/set-window 0))
 
 ;;; buffer
-(defun hlepers/kill-all-buffer ()
-  "Kill all buffer."
-  (interactive)
-  (dolist (buffer (buffer-list)) (kill-buffer buffer)))
-
 (defun helpers/kill-other-buffer (&optional buf)
   "Close all of other buffer."
   (interactive)
@@ -60,6 +55,13 @@
     (if symbol (helpful-symbol symbol)
       (call-interactively #'helpful-symbol))))
 
+;; fullscreen
+(defun helpers/fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen
+                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+
 (provide 'init-helpers)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-helpers.el ends here 
