@@ -1,44 +1,42 @@
-;; package initialize
+;; 配置包的安装源
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (setq package-enable-at-startup nil)
-(package-initialize) ;; You might already have this line
+(package-initialize) ;; 初始化
 
+;; 按照use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(defun require-package (package &optional min-version no-refresh)
-  "Ask elpa to install package"
-  (cond
-   ((package-installed-p package min-version)
-    t)
-   ((or (assoc package package-archive-contents) no-refresh)
-    (package-install package))
-   (t
-    (package-refresh-contents)
-    (require-package package min-version t))))
-
-;; @see https://github.com/raxod502/straight.el
-(require-package 'use-package)
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-always-defer t)
-  (setq use-package-expand-minimally t)
-  (setq use-package-enable-imenu-support t))
+;; 配置为总是
 
 ;; Update GPG keyring for GNU ELPA
-(use-package gnu-elpa-keyring-update)
+;; (use-package gnu-elpa-keyring-update :ensure t)
 
 ;; @see https://github.com/jwiegley/emacs-async
-(use-package async)
+(use-package async :ensure t)
 
 ;; @see https://github.com/auto-complete/popup-el
-(use-package popup)
+(use-package popup :ensure t)
 
 ;; @see https://github.com/domtronn/all-the-icons.el
-(use-package all-the-icons)
+(use-package all-the-icons :ensure t)
+
+;; Environment
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (setq exec-path-from-shell-check-startup-files nil
+        exec-path-from-shell-variables '("PATH" "MANPATH")
+        exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize))
 
 ;; @see https://github.com/rranelli/auto-package-update.el
 (use-package auto-package-update
+  :ensure t
   :init
   (setq auto-package-update-delete-old-versions t
         auto-package-update-hide-results t)

@@ -4,7 +4,7 @@
   :diminish company-mode
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-abort
-  :hook (after-init . global-company-mode)
+  :hook (prog-mode . global-company-mode)
   :bind
   (("M-/" . company-complete)
    ("<backtab>" . company-yasnippet)
@@ -26,13 +26,13 @@
     (call-interactively 'company-yasnippet))
   :config
   (setq company-tooltip-align-annotations t
-	company-tooltip-limit 12 
-	company-idle-delay 0
-	company-echo-delay (if (display-graphic-p) nil 0)
-	company-minimum-prefix-length 2
-	company-require-match nil
-	company-dabbrev-ignore-case nil
-	company-dabbrev-downcase nil)
+        company-tooltip-limit 12 
+        company-idle-delay 0
+        company-echo-delay (if (display-graphic-p) nil 0)
+        company-minimum-prefix-length 2
+        company-require-match nil
+        company-dabbrev-ignore-case nil
+        company-dabbrev-downcase nil)
 
 
   ;; @see https://github.com/raxod502/prescient.el

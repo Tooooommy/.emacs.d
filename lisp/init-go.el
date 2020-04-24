@@ -69,7 +69,4 @@
   :ensure t 
   :diminish)
 
-
-
-
 (provide 'init-go)

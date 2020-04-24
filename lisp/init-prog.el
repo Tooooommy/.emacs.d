@@ -1,3 +1,66 @@
+;; sql
+(use-package sql-indent
+  :after (:any sql sql-interactive-mode)
+  :delight sql-mode "Σ ")
+
+;; lua
+(use-package lua-mode
+  :delight "Λ "
+  :mode "\\.lua\\'"
+  :interpreter ("lua" . lua-mode))
+
+;; yaml
+(use-package yaml-mode
+  :delight "ψ "
+  :mode "\\.yml\\'"
+  :interpreter ("yml" . yml-mode))
+
+;; xml
+(use-package xml-mode
+  :ensure nil
+  :mode ("\\.wsdl\\'" "\\.xsd\\'"))
+
+;; json
+(use-package json-mode
+  :delight "J "
+  :mode "\\.json\\'"
+  :hook (before-save . my/json-mode-before-save-hook)
+  :preface
+  (defun my/json-mode-before-save-hook ()
+    (when (eq major-mode 'json-mode)
+      (json-pretty-print-buffer))))
+
+;; restclient
+;; @see https://github.com/pashky/restclient.el
+(use-package restclient
+  :ensure t
+  :mode ("//.http//'" . restclient-mode)
+  :config
+  ;; @see https://github.com/iquiw/company-restclient
+  (use-package company-restclient
+    :ensure t
+    :ensure t
+    :config (add-to-list 'company-backends 'company-restclient)))
+
+;; elnode
+;; @see https://github.com/nicferrier/elnode
+(use-package elnode
+  :ensure t)
+
+;; editconfig
+(use-package editorconfig
+  :defer 0.3
+  :config (editorconfig-mode 1))
+
+;; dockerfile
+;; @see https://github.com/spotify/dockerfile-mode
+(use-package dockerfile-mode
+  :ensure t
+  :mode ("Dockerfile\\'" . dockerfile-mode)
+  :config (setq dockerfile-mode-command "docker"))
+
+
+
 ;; @see https://github.com/syohex/emacs-quickrun
 (use-package quickrun
   :ensure t

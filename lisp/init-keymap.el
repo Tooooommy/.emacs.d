@@ -36,7 +36,16 @@
 
 ;; space ==> helm
 (leader-key "SPC" '(helm-M-x :wk "command line"))
-(leader-key "0" '(treemacs-select-window :wk "treemacs window"))
+(leader-key "0" '(treemacs-select-window :wk "select treemacs"))
+(leader-key "1" '(winum-select-window-1 :wk "select window1"))
+(leader-key "2" '(winum-select-window-2 :wk "select window2"))
+(leader-key "3" '(winum-select-window-3 :wk "select window3"))
+(leader-key "4" '(winum-select-window-4 :wk "select window4"))
+(leader-key "5" '(winum-select-window-5 :wk "select window5"))
+(leader-key "6" '(winum-select-window-6 :wk "select window6"))
+(leader-key "7" '(winum-select-window-7 :wk "select window7"))
+(leader-key "8" '(winum-select-window-8 :wk "select window8"))
+(leader-key "9" '(winum-select-window-9 :wk "select window9"))
 
 ;; comments
 (leader-key "c" '(:wk "comment")
@@ -110,10 +119,8 @@
   "wm" '(maximize-window :wk "max")
   "ws" '(evil-window-split :wk "split")
   "wv" '(evil-window-vsplit :wk "vsplit")
-  "wc" '(evil-window-new :wk "create")
-  "wk" '(evil-window-delete :wk "kill")
-  "wn" '(evil-window-next :wk "next")
-  "wp" '(evil-window-prev :wk "previous")
+  "wc" '(evil-window-delete :wk "close")
+  "wn" '(evil-window-new :wk "new")
   "wl" '(evil-window-right :wk "right")
   "wh" '(evil-window-left :wk "left")
   "wj" '(evil-window-bottom :wk "bottom")
@@ -134,41 +141,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; language
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; markdown
-(leader-key "m"  '(:wk "language")
-  :keymaps '(markdown-mode-map gfm-mode-map) ;; markdown
-
-  "mi" '(:wk "markdown insert")
-  "mia" '(markdown-insert-header :wk "header")
-  "mib" '(markdown-insert-bold :wk "bold")
-  "mic" '(markdown-insert-code :wk "code") ;;d
-  "mif" '(markdown-insert-footnote :wk "footnote")
-  "mig" '(markdown-insert-image :wk "image")
-  "mih" '(markdown-insert-hr :wk "hr") ;;
-  "mii" '(markdown-insert-italic :wk "italic")
-  "mit" '(markdown-insert-table :wk "table")
-  "miu" '(markdown-insert-uri :wk "uri")
-  "mik" '(markdown-insert-kbd :wk "kbd")
-  "mip" '(markdown-insert-pre :wk "pre")
-  "mil" '(markdown-insert-link :wk "link")
-  "miw" '(markdown-insert-wiki-link :wk "wiki link")
-  "mim" '(markdown-insert-list-item :wk "list item")
-  "miq" '(markdown-insert-blockquote :wk "blockquote")
-  "mis" '(markdown-insert-strike-through :wk "strike through")
-  "mi0" '(markdown-insert-header :wk "header")
-  "mi1" '(markdown-insert-header-atx-1 :wk "header 1")
-  "mi2" '(markdown-insert-header-atx-2 :wk "header 2")
-  "mi3" '(markdown-insert-header-atx-3 :wk "header 3")
-  "mi4" '(markdown-insert-header-atx-4 :wk "header 4")
-  "mi5" '(markdown-insert-header-atx-4 :wk "header 5")
-  "mi6" '(markdown-insert-header-atx-4 :wk "header 6")
-
-  "mp" '(markdown-preview :wk "preview")
-  "me" '(markdown-export :wk "export")
-  "mo" '(markdown-export-and-preview :wk "export and preview") ;; output
-  "ml" '(markdown-live-preview-mode :wk "preview on buffer") ;; live
-  "mm" '(markdown-toc-generate-toc :wk "generate outline"))   ;; generate
 
 ;; golang
 (leader-key "m" '(:wk "language")

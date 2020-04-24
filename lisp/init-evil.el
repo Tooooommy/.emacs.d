@@ -77,4 +77,5 @@
 
 (provide 'init-evil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; init-evil.el ends here

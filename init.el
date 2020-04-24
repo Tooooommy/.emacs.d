@@ -25,24 +25,21 @@
 (require 'init-elpa)
 (require 'init-helpers)
 
-;; (require 'init-ido)
+(require 'init-misc)
 (require 'init-calendar)
 (require 'init-evil)
-(require 'init-config)
 (require 'init-keymap)
-(require 'init-prog)
 (require 'init-gui)
 (require 'init-edit)
 (require 'init-treemacs)
 (require 'init-helm)
 (require 'init-projectile)
-(require 'init-restclient)
-
-;; text
-(require 'init-markdown)
-(require 'init-org)
 
 ;; prog
+(require 'init-prog)
+(require 'init-markdown)
+(require 'init-cpp)
+(require 'init-org)
 (require 'init-git)
 (require 'init-lsp)
 (require 'init-docker)

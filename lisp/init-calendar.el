@@ -32,31 +32,5 @@
                 cal-china-x-general-holidays
                 holiday-other-holidays)))
 
-;; calfw 
-;; @see https://github.com/kiwanami/emacs-calfw
-;; (use-package calfw
-;;  :ensure t
-;;  :commands cfw:open-calendar-buffer
-;;  :bind ("<C-f1>" . open-calendar)
-;;  :init 
-;;     (use-package calfw-org
-;;      :commands (cfw:open-org-calendar cfw:org-create-source))
-;;
-;;     (defun open-calendar ()
-;;         "Open calendar"
-;;         (interactive)
-;;         (unless (ignore-errors
-;;                     (cfw:open-calendar-buffer
-;;                         :contents-source
-;;                         (list (when org-agenda-files
-;;                                 (cfw:org-create-source "YellowGreen")))))
-;;                     (cfw:open-calendar-buffer)))
-;;  :config 
-;;         (setq calendar-month-name-array 
-;;             ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12"]))
-;;         (setq calendar-day-name-array
-;;             ["星期天 " "星期一 " "星期二 " "星期三 " "星期四 " "星期五 " "星期六 "])
-;;         (setq calendar-week-start-day 0)
- 
 (provide 'init-calendar)
 ;;; init-calendar.el ends here
