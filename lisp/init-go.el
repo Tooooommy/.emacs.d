@@ -10,8 +10,8 @@
                      (yas-minor-mode t) 
                      (setq tab-width 2)))
   :bind (:map go-mode-map
-         ("C-c R" . go-remove-unused-imports)
-         ("<f1>" . godoc-at-point))
+         ("<f1>" . go-remove-unused-imports)
+         ("<f2>" . godoc-at-point))
   :config 
   ;; Env vars
   (with-eval-after-load 'exec-path-from-shell

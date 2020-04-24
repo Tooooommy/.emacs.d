@@ -20,7 +20,7 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config
-  (setq doom-modeline-icon nil
+  (setq doom-modeline-icon t
         doom-modeline-irc t
         doom-modeline-mu4e t
         doom-modeline-project-detection 'project
@@ -39,8 +39,5 @@
   :after doom-modeline
   :hook (after-init . fancy-battery-mode))
 
-
 (provide 'init-gui)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-gui.el ends here

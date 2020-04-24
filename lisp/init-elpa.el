@@ -43,8 +43,6 @@
   (defalias 'upgrade-packages #'auto-package-update-now))
 
 ;; about tools lib 
-;; @see https://github.com/magnars/dash.el
-;; @see https://github.com/kiwanami/emacs-deferred
 ;; @see https://github.com/emacsorphanage/ov
 ;; @see https://github.com/Malabarba/names
 ;; @see https://github.com/rejeep/f.el

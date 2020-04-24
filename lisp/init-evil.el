@@ -45,9 +45,8 @@
     :ensure t 
     :diminish
     :demand t
-    :after evil
+    :hook (after-init . evil-escape-mode)
     :bind ("C-g" . evil-escape)
-    :init (evil-escape-mode +1)
     :config (progn
               (setq-default evil-escape-exclude-states '(normal visual multiedit emacs motion))
               (setq-default evil-escape-exclude-major-modes '(neotree-mode))
@@ -58,7 +57,7 @@
   (use-package evil-mc
     :ensure t
     :after evil
-    :init (global-evil-mc-mode 1)
+    :hook (after-init . global-evil-mc-mode)
     :config
     (evil-define-key 'visual evil-mc-key-map
       "A" #'evil-mc-make-cursor-in-visual-selection-end

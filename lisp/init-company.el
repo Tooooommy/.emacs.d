@@ -38,7 +38,6 @@
   ;; @see https://github.com/raxod502/prescient.el
   (use-package company-prescient
     :ensure t
-    :init (company-prescient-mode 1)
     :hook (company-mode . company-prescient-mode))
 
   ;; @see https://github.com/expez/company-quickhelp
@@ -53,7 +52,6 @@
   ;; @see https://github.com/PythonNut/company-flx
   (use-package company-flx
     :ensure t
-    :init (company-flx-mode +1)
     :hook (global-company-mode . company-flx-mode)))
 
   (provide 'init-company)

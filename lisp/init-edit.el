@@ -14,8 +14,9 @@
 ;; @see https://github.com/xcodebuild/nlinum-relative
 (use-package nlinum-relative
   :ensure t
-  :hook (prog-mode . nlinum-relative-mode)
-  :init (nlinum-relative-setup-evil)
+  :hook
+  ((prog-mode . nlinum-relative-mode)
+   (after-init . nlinum-relative-setup-evil))
   :config 
   (setq nlinum-relative-offset 0
         nlinum-relative-redisplay-delay 0
@@ -39,7 +40,7 @@
 ;; @see https://github.com/malabarba/aggressive-indent-mode
 (use-package aggressive-indent
   :ensure t 
-  :init (global-aggressive-indent-mode t))
+  :hook (after-init . global-aggressive-indent-mode))
 
 ;; @see http://www.dr-qubit.org/git/undo-tree.git
 ;; @see https://github.com/emacsmirror/undo-tree
@@ -58,20 +59,18 @@
         version-control t))
 
 ;; @see https://github.com/dajva/rg.el
-;; 查找rg
 (use-package rg
-  :ensure t)
+  :ensure t
+  :config (rg-enable-default-bindings))
 
 ;; @see https://github.com/nonsequitur/smex/
 (use-package smex
   :ensure t
-  :init (smex-initialize)
+  :hook (after-init . smex-initialize)
   :bind
   (("M-x" . smex)
    ("M-X" . smex-major-mode-commands)
    ("C-c C-c M-x" . execute-extended-command)))
 
 (provide 'init-edit)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-edit.el ends here
