@@ -41,20 +41,35 @@
   :ensure t 
   :init (global-aggressive-indent-mode t))
 
-;; paren
-(use-package paren
-  :ensure t
-  :init (show-paren-mode)
+;; @see http://www.dr-qubit.org/git/undo-tree.git
+;; @see https://github.com/emacsmirror/undo-tree
+;; 撤回树
+(use-package undo-tree
+  :load-path "~/.emacs.d/github/undo-tree-20170706.246"
+  :diminish
   :config
-  (setq show-paren-when-point-inside-paren t
-        show-paren-when-point-in-periphery t))
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-history-directory-alist `(("." . "~/.emacs.d/undotree")))
+  (setq delete-old-versions t
+        backup-directory-alist `(("." . "~/.emacs.d/saves"))
+        backup-by-copying t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t))
 
-;; Highlight the current line
-(use-package hl-line
-  :ensure nil
-  :hook ((after-init . global-hl-line-mode)
-         ((dashboard-mode eshell-mode shell-mode term-mode vterm-mode) .
-          (lambda () (setq-local global-hl-line-mode nil)))))
+;; @see https://github.com/dajva/rg.el
+;; 查找rg
+(use-package rg
+  :ensure t)
+
+;; @see https://github.com/nonsequitur/smex/
+(use-package smex
+  :ensure t
+  :init (smex-initialize)
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)
+   ("C-c C-c M-x" . execute-extended-command)))
 
 (provide 'init-edit)
 

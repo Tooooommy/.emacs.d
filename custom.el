@@ -3,13 +3,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(hs-special-modes-alist
+   (quote
+    ((c-mode "{" "}" "/[*/]" nil nil)
+     (c++-mode "{" "}" "/[*/]" nil nil)
+     (rust-mode "{" "}" "/[*/]" nil nil)
+     (go-mode "{" "}" "/[*/]" nil nil))) t)
+ '(lazy-highlight-cleanup nil)
  '(package-selected-packages
    (quote
-    (ox-hugo yasnippet-snippets yaml-mode winum which-key use-package treemacs-projectile treemacs-magit treemacs-icons-dired treemacs-evil toc-org super-save sql-indent smex smartparens scss-mode rust-playground rg rainbow-delimiters quickrun ox-gfm org-tree-slide org-rich-yank org-preview-html org-pomodoro org-mime org-fancy-priorities org-bullets ob-rust ob-ipython ob-go nlinum-relative modern-cpp-font-lock mixed-pitch markdown-toc magit-todos magit-gitflow macrostep lua-mode lsp-ui lsp-python-ms js2-mode ibuffer-projectile highlight-defined helpful helm-swoop helm-ls-git helm-flx helm-ag google-c-style godoctor go-tag go-playground go-impl go-fill-struct go-eldoc go-dlv gnu-elpa-keyring-update git-timemachine git-messenger general forge flycheck-rust flycheck-posframe flycheck-pos-tip flycheck-golangci-lint fancy-battery exec-path-from-shell evil-surround evil-nerd-commenter evil-mc evil-magit evil-escape engine-mode elnode elisp-slime-nav eglot editorconfig easy-hugo dumb-jump doom-themes doom-modeline dockerfile-mode docker diff-hl delight dap-mode css-eldoc company-restclient company-quickhelp company-prescient company-lsp company-flx cmake-ide cmake-font-lock ccls cargo cal-china-x better-defaults benchmark-init auto-yasnippet auto-package-update aggressive-indent ag))))
+    (git-messenger git-timemachine magit-gitflow magit-todos forge helm-ls-git evil-magit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil evil-mc evil-escape evil-nerd-commenter evil-surround yasnippet-snippets yaml-mode which-key use-package treemacs toc-org super-save sql-indent smex smartparens rust-playground rg restclient rainbow-delimiters quickrun ox-gfm org-tree-slide org-rich-yank org-preview-html org-pomodoro org-mime org-fancy-priorities org-bullets ob-rust ob-ipython ob-go nlinum-relative modern-cpp-font-lock markdown-toc magit macrostep lua-mode json-mode ibuffer-projectile highlight-defined helpful google-c-style go-playground general flycheck-rust flycheck-posframe flycheck-pos-tip fancy-battery exec-path-from-shell evil elnode elisp-slime-nav eglot editorconfig dumb-jump doom-themes doom-modeline dockerfile-mode diff-hl company-quickhelp company-prescient company-flx cmake-ide cmake-font-lock cargo cal-china-x better-defaults auto-package-update aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(lsp-ui-sideline-code-action ((t (:inherit warning))))
- '(macrostep-expansion-highlight-face ((t (:background "#23272e")))))
+ '(git-timemachine-minibuffer-author-face ((t (:inherit success))))
+ '(git-timemachine-minibuffer-detail-face ((t (:inherit warning))))
+ '(macrostep-expansion-highlight-face ((t (:background "#23272e"))))
+ '(org-pomodoro-mode-line ((t (:inherit warning))))
+ '(org-pomodoro-mode-line-break ((t (:inherit success))))
+ '(org-pomodoro-mode-line-overtime ((t (:inherit error)))))

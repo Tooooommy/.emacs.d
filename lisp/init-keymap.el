@@ -30,22 +30,13 @@
   
 ;; emacs key bind like
 (general-define-key [f11] 'helpers/fullscreen)
-(general-define-key "M-x" 'helm-M-x :keymaps 'override) ;; 重新绑定
+(general-define-key "M-x" 'smex :keymaps 'override) ;; 重新绑定
 (general-define-key "M-;" 'evilnc-comment-or-uncomment-lines :wk "comment")
 
 
-;; space ==> helm
-(leader-key "SPC" '(helm-M-x :wk "command line"))
+;; space leader
+(leader-key "SPC" '(smex :wk "command line"))
 (leader-key "0" '(treemacs-select-window :wk "select treemacs"))
-(leader-key "1" '(winum-select-window-1 :wk "select window1"))
-(leader-key "2" '(winum-select-window-2 :wk "select window2"))
-(leader-key "3" '(winum-select-window-3 :wk "select window3"))
-(leader-key "4" '(winum-select-window-4 :wk "select window4"))
-(leader-key "5" '(winum-select-window-5 :wk "select window5"))
-(leader-key "6" '(winum-select-window-6 :wk "select window6"))
-(leader-key "7" '(winum-select-window-7 :wk "select window7"))
-(leader-key "8" '(winum-select-window-8 :wk "select window8"))
-(leader-key "9" '(winum-select-window-9 :wk "select window9"))
 
 ;; comments
 (leader-key "c" '(:wk "comment")
@@ -57,12 +48,12 @@
 
 ;; buffers
 (leader-key "b" '(:wk "buffer")
-  "bb" '(helm-buffers-list :wk "list")
+  "bb" '(ibuffer :wk "list")
   "bn" '(evil-next-buffer :wk "next")
   "bp" '(evil-prev-buffer :wk "previous")
   "bc" '(evil-buffer-new :wk "create")
   "bd" '(evil-delete-buffer :wk "delete")
-  "br" '(rename-buffer :wk "rename")
+  "bg" '(ibuffer-jump :wk "jump")
   "bm" '(helpers/kill-other-buffer :wk "kill other"))
 
 ;; edit
@@ -86,20 +77,16 @@
 
 ;; files
 (leader-key "f" '(:wk "file")
-  "ff" '(helm-find-files :wk "find")
-  "fa" '(helm-ag-this-file :wk "ag search")
+  "ff" '(ido-find-file :wk "find")
   "fs" '(save-buffer :wk "save")
   "ft" '(treemacs :wk "tree")
-  "fr" '(helm-recentf :wk "recentf")
+  "fr" '(recentf-open-files :wk "recentf")
   "fe" '(helpers/open-init-file :wk "init.el")
-  "fy" '(helm-show-kill-ring :wk "kill ring")
-  "fm" '(helm-mini :wk "mini")
-  "fo" '(helm-occur :wk "occur")
-  "fi" '(helm-register :wk "register")
+  "fm" '(smex :wk "smex")
   "fb" '(:wk "bookmark")
-  "fbb" '(helm-bookmarks :wk "list")
-  "fbs" '(bookmark-set :wk "set")
-  "fbS" '(bookmark-save :wk "save")
+  "fbb" '(list-bookmarks :wk "list")
+  "fbm" '(bookmark-set :wk "mark")
+  "fbs" '(bookmark-save :wk "save")
   "fbd" '(bookmark-delete :wk "delete")
   "fbl" '(bookmark-load :wk "load")
   "fbj" '(bookmark-jump :wk "jump"))
@@ -121,22 +108,13 @@
   "wv" '(evil-window-vsplit :wk "vsplit")
   "wc" '(evil-window-delete :wk "close")
   "wn" '(evil-window-new :wk "new")
-  "wl" '(evil-window-right :wk "right")
   "wh" '(evil-window-left :wk "left")
   "wj" '(evil-window-bottom :wk "bottom")
   "wk" '(evil-window-up :wk "up") ;;; 
-  "wo" '(other-window :wk "other window") ;;; 跳转到其他的窗口
+  "wl" '(evil-window-right :wk "right")
+  "wo" '(other-window :wk "other window")
   "wf" '(helpers/fullscreen :wk "fullscreen") ;;; 满屏
-  "w0" '(treemacs-select-window :wk "treemacs")
-  "w1" '(winum-select-window-1 :wk "window 1")
-  "w2" '(winum-select-window-2 :wk "window 2")
-  "w3" '(winum-select-window-3 :wk "window 3")
-  "w4" '(winum-select-window-4 :wk "window 4")
-  "w5" '(winum-select-window-5 :wk "window 5")
-  "w6" '(winum-select-window-6 :wk "window 6")
-  "w7" '(winum-select-window-7 :wk "window 7")
-  "w8" '(winum-select-window-8 :wk "window 8")
-  "w9" '(winum-select-window-9 :wk "window 9"))
+  "ww" '(treemacs-select-window :wk "treemacs"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; language

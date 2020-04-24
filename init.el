@@ -25,6 +25,7 @@
 (require 'init-elpa)
 (require 'init-helpers)
 
+(require 'init-builtin)
 (require 'init-misc)
 (require 'init-calendar)
 (require 'init-evil)
@@ -32,7 +33,6 @@
 (require 'init-gui)
 (require 'init-edit)
 (require 'init-treemacs)
-(require 'init-helm)
 (require 'init-projectile)
 
 ;; prog
@@ -41,8 +41,7 @@
 (require 'init-cpp)
 (require 'init-org)
 (require 'init-git)
-(require 'init-lsp)
-(require 'init-docker)
+(require 'init-eglot)
 (require 'init-flycheck)
 (require 'init-company)
 (require 'init-yasnippet)

@@ -24,11 +24,8 @@
 (setq-default
  ad-redefinition-action 'accept                   ; Silence warnings for redefinition
  cursor-in-non-selected-windows t                 ; Hide the cursor in inactive windows
- display-time-default-load-average nil            ; Don't display load average
  fill-column 80                                   ; Set width for automatic line breaks
  help-window-select t                             ; Focus new help windows when opened
- indent-tabs-mode nil                             ; Prefers spaces over tabs
- inhibit-startup-screen t                         ; Disable start-up screen
  kill-ring-max 128                                ; Maximum length of kill ring
  load-prefer-newer t                              ; Prefers the newest version of a file
  mark-ring-max 128                                ; Maximum length of mark ring
@@ -56,11 +53,11 @@
 
 ;; 显示设置
 (cd "~/")                                         ; 切换到主目录
-(line-number-mode 1)                              ; 显示行号
-(column-number-mode 1)                            ; 显示列号
+;; (line-number-mode 1)                              ; 显示行号
+;; (column-number-mode 1)                            ; 显示列号
 (display-time-mode 1)                             ; 在modeline 加上时间
-(global-hl-line-mode)                             ; 高亮当前行
-(show-paren-mode 1)                               ; 光亮匹配符号
+;; (global-hl-line-mode)                             ; 高亮当前行
+;; (show-paren-mode 1)                               ; 光亮匹配符号
 (fset 'yes-or-no-p 'y-or-n-p)                     ; 改变询问字符
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -171,7 +168,7 @@
   :hook (ibuffer . my/ibuffer-projectile))
 
 ;; 文件修改后自动加载刷新
-(global-auto-revert-mode t)
+;; (global-auto-revert-mode t)
 
 (provide 'init-misc)
 ;;; init-misc.el here ends
