@@ -72,33 +72,8 @@
   :ensure t
   :after evil
   :hook (after-init . dumb-jump-mode)
-  :bind
-  (:map evil-visual-state-map
-   ("g d" . dumb-jump-go)
-   ("g b" . dumb-jump-back)
-   ("g o" . dumb-jump-go-other-window)
-   ("g e" . dumb-jump-go-prefer-external)
-   ("g x" . dumb-jump-go-prefer-external-other-window)
-   ("g i" . dumb-jump-go-prompt)
-   ("g l" . dumb-jump-quick-look)
-   :map evil-motion-state-map
-   ("g d" . dumb-jump-go)
-   ("g b" . dumb-jump-back)
-   ("g o" . dumb-jump-go-other-window)
-   ("g e" . dumb-jump-go-prefer-external)
-   ("g x" . dumb-jump-go-prefer-external-other-window)
-   ("g i" . dumb-jump-go-prompt)
-   ("g l" . dumb-jump-quick-look)
-   :map evil-normal-state-map
-   ("g d" . dumb-jump-go)
-   ("g b" . dumb-jump-back)
-   ("g o" . dumb-jump-go-other-window)
-   ("g e" . dumb-jump-go-prefer-external)
-   ("g x" . dumb-jump-go-prefer-external-other-window)
-   ("g i" . dumb-jump-go-prompt)
-   ("g l" . dumb-jump-quick-look))
-  :config (setq ;;dumb-jump-prefer-searcher 'rg
-           dumb-jump-selector 'helm))
+  :config (setq dumb-jump-prefer-searcher 'rg
+                dumb-jump-selector 'rg))
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

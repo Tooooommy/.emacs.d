@@ -32,7 +32,8 @@
 (general-define-key [f11] 'helpers/fullscreen)
 (general-define-key "M-x" 'smex :keymaps 'override) ;; 重新绑定
 (general-define-key "M-;" 'evilnc-comment-or-uncomment-lines :wk "comment")
-
+(general-define-key "gd" 'xref-find-definitions :states '(normal visual motion) :keymaps 'override :wk "jump")
+(general-define-key "gb" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")
 
 ;; space leader
 (leader-key "SPC" '(smex :wk "command line"))
@@ -101,7 +102,7 @@
 
 ;; windows
 (leader-key "w" '(:wk "window")
-  "wc" '(helpers/increase-window :wk "increase") 
+  "wi" '(helpers/increase-window :wk "increase") 
   "wd" '(helpers/decrease-window :wk "decrease")
   "wm" '(maximize-window :wk "max")
   "ws" '(evil-window-split :wk "split")
@@ -121,8 +122,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; golang
-(leader-key "m" '(:wk "language")
-  :keymaps 'go-mode-map ;; golang
+(leader-key "m" '(:wk "golang")
+  :keymaps 'go-mode-map 
 
   "mi" '(:wk "import")
   "mig" '(go-goto-imports :wk "goto imports")
@@ -132,8 +133,8 @@
   "mx" '(:wk "action")
   "mxx" '(go-run :wk "run")
   "mxt" '(go-test-current-test :wk "test")
-  "mxf" '(gofmt :wk "format")
-  "mxr" '(godoctor-rename :wk "rename")
+  "mxf" '(go-run :wk "format")
+  "mxr" '(eglot-rename :wk "rename")
   "mxc" '(go-coverage :wk "coverage")
   "mxb" '(go-play-buffer :wk "play buffer")
   "mxe" '(go-play-region :wk "play region")
@@ -153,19 +154,17 @@
   "mb" '(:wk "benchmark")
   "mbb" '(go-test-current-benchmark :wk "current benchmark")
   "mbf" '(go-test-current-file-benchmarks :wk "current benchmark")
-  "mbp" '(go-test-current-project-benchmarks :wk "current project")
-
-  "mg" '(:wk "jump")
-  "mgg" '(godef-describe :wk "describe")
-  "mgj" '(godef-jump :wk "jump")
-  "mgo" '(godef-jump-other-window :wk "jump other window"))
+  "mbp" '(go-test-current-project-benchmarks :wk "current project"))
 
 ;; rust
 (leader-key "m" '(:wk "rust")
   :keymaps 'rust-mode-map
   "mx" '(:wk "action")
-  "mxx" '(rust-run :wk "run")
-  "mxt" '(rust-test :wk "test")
+  "mxx" '(cargo-process-run :wk "run")
+  "mxt" '(cargo-process-test :wk "test")
+  "mxf" '(cargo-process-fmt :wk "format")
+  "mxr" '(eglot-rename :wk "rename")
+  "mxh" '(cargo-process-doc-open :wk "doc")
   "mxc" '(rust-compile :wk "compile"))
 
 (provide 'init-keymap)
