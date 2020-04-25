@@ -2,17 +2,16 @@
 ;; @see https://github.com/dominikh/go-mode.el
 (use-package go-mode
   :ensure t
-  :after evil-mode
-  :mode ("//.go//'" . go-mode)
-  :hook (go-mode . (lambda() 
-                     (lsp-deferred)
-                     (dumb-jump-mode t) 
-                     (yas-minor-mode t) 
-                     (setq tab-width 2)))
-  :bind (:map go-mode-map
-         ("<f1>" . go-remove-unused-imports)
-         ("<f2>" . godoc-at-point))
+  :mode
+  ("//.go//'" . go-mode)
+  :hook
+  (go-mode . yas-minor-mode)
+  :bind
+  (:map go-mode-map
+   ("C-c R" . go-remove-unused-imports)
+   ("C-c D" . godoc-at-point))
   :config 
+  (setq tab-width 2)
   ;; Env vars
   (with-eval-after-load 'exec-path-from-shell
     (exec-path-from-shell-copy-envs '("GOPATH" "GO111MODULE" "GOPROXY")))
@@ -93,11 +92,7 @@
 
   ;; @see https://github.com/nlamirault/gotest.el
   (use-package gotest
-    :bind (:map go-mode-map
-           ("C-c t a" . go-test-current-project)
-           ("C-c t m" . go-test-current-file)
-           ("C-c t ." . go-test-current-test)
-           ("C-c t x" . go-run)))
+    :ensure t)
 
   ;; @see https://github.com/s-kostyaev/go-gen-test
   (use-package go-gen-test
@@ -109,21 +104,27 @@
     :ensure t
     :config (setq go-tag-args (list "-transform" "snakecase")))
 
-  ;; @see https://github.com/weijiangan/flycheck-golangci-lint
-  (use-package flycheck-golangci-lint
+  ;; ;; @see https://github.com/weijiangan/flycheck-golangci-lint
+  ;; (use-package flycheck-golangci-lint
+  ;;   :ensure t
+  ;;   :after flycheck
+  ;;   :defines flycheck-disabled-checkers
+  ;;   :hook 
+  ;;   (go-mode . (lambda () 
+  ;;                "Enable golangci-lint"
+  ;;                (setq flycheck-disabled-checkers '(go-gofmt
+  ;;                                                   go-golint
+  ;;                                                   go-vet
+  ;;                                                   go-build
+  ;;                                                   go-test
+  ;;                                                   go-errcheck))
+  ;;                (flycheck-golangci-lint-setup))))
+
+  ;; @see https://github.com/emacsmirror/flymake-golangci
+  (use-package flymake-golangci
     :ensure t
-    :after flycheck
-    :defines flycheck-disabled-checkers
-    :hook 
-    (go-mode . (lambda () 
-                 "Enable golangci-lint"
-                 (setq flycheck-disabled-checkers '(go-gofmt
-                                                    go-golint
-                                                    go-vet
-                                                    go-build
-                                                    go-test
-                                                    go-errcheck))
-                 (flycheck-golangci-lint-setup)))))
+    :hook (go-mode . flymake-golangci-load))
+  )
 
 (provide 'init-go)
 ;;; init-go.el ends here

@@ -22,15 +22,6 @@
   (let ((val (or (getenv "P4CONFIG") ".p4config")))
     (add-to-list 'projectile-project-root-files-bottom-up val)))
 
-;; ibuffer projectile
-(use-package ibuffer-projectile
-  :after ibuffer
-  :preface
-  (defun my/ibuffer-projectile ()
-    (ibuffer-projectile-set-filter-groups)
-    (unless (eq ibuffer-sorting-mode 'alphabetic)
-      (ibuffer-do-sort-by-alphabetic)))
-  :hook (ibuffer . my/ibuffer-projectile))
 
 
 

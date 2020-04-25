@@ -49,5 +49,5 @@
     :hook (global-company-mode . company-quickhelp-mode)
     :init (setq company-quickhelp-delay 0.5)))
 
-  (provide 'init-company)
+(provide 'init-company)
 ;;; init-company.el ends here

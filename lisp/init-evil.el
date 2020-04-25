@@ -63,13 +63,7 @@
   ;; @see ....
   (use-package treemacs-evil
     :ensure t
-    :after treemacs evil)
-
-  ;; @see https://github.com/emacs-evil/evil-collection
-  (use-package evil-collection
-    :ensure t
-    :after evil
-    :config (evil-collection-init)))
+    :after treemacs evil))
 
 (provide 'init-evil)
 

@@ -5,7 +5,7 @@
     (error "Emacs %s or higher is required." minver)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "github" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
 ;; adjust garbage collection thresholds during startup, and thereafter
 (setq file-name-handler-alist nil)
@@ -42,8 +42,8 @@
 (require 'init-org)
 (require 'init-git)
 (require 'init-eglot)
-(require 'init-flycheck)
 (require 'init-company)
+(require 'init-flycheck)
 (require 'init-yasnippet)
 (require 'init-elisp)
 (require 'init-go)

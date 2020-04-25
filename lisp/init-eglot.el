@@ -1,6 +1,8 @@
 ;; @see https://github.com/joaotavora/eglot
 (use-package eglot
   :ensure t
-  :hook (prog-mode . eglot-ensure))
+  :hook
+  ((go-mode
+    rust-mode) . eglot-ensure))
 
 (provide 'init-eglot)

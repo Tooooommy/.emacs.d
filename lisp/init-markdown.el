@@ -19,5 +19,6 @@
     :bind (:map markdown-mode-command-map
            ("r" . markdown-toc-generate-or-refresh-toc))))
 
+
 (provide 'init-markdown)
 ;;; init-markdown ends here

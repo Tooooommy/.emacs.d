@@ -40,7 +40,13 @@
 ;; @see https://github.com/malabarba/aggressive-indent-mode
 (use-package aggressive-indent
   :ensure t 
-  :hook (after-init . global-aggressive-indent-mode))
+  :hook (after-init . global-aggressive-indent-mode)
+  :config
+  (add-to-list
+   'aggressive-indent-dont-indent-if
+   '(and (derived-mode-p 'c++-mode)
+         (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
+                             (thing-at-point 'line))))))
 
 ;; smex M-x
 ;; @see https://github.com/nonsequitur/smex/
@@ -93,7 +99,6 @@
     (unless (eq ibuffer-sorting-mode 'alphabetic)
       (ibuffer-do-sort-by-alphabetic)))
   :hook (ibuffer . my/ibuffer-projectile))
-
 
 
 (provide 'init-edit)

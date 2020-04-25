@@ -191,46 +191,6 @@ Lisp function does not specify a special indentation."
               (revert-buffer nil t)))))))
   (bind-key "r" #'remove-hook-at-point help-mode-map))
 
-;; @see https://github.com/joddie/macrostep
-(use-package macrostep
-  :ensure t
-  :after elisp-mode
-  :custom-face (macrostep-expansion-highlight-face ((t (:background ,(face-background 'tooltip)))))
-  :bind (:map emacs-lisp-mode-map
-         ("C-c C-m" . macrostep-expand)
-         :map lisp-interaction-mode-map
-         ("C-c C-m" . macrostep-expand))
-  :config (add-hook 'after-load-theme-hook (lambda ()
-                                             (set-face-background 'macrostep-expansion-highlight-face
-                                                                  (face-background 'tooltip)))))
-;; @see https://github.com/purcell/elisp-slime-nav
-(use-package elisp-slime-nav
-  :ensure t 
-  :after elisp-mode
-  :diminish
-  :commands (elisp-slime-nav-mode elisp-slime-nav-find-elisp-thing-at-point))
-
-;; @see https://github.com/Wilfred/helpful
-(use-package helpful
-  :ensure t
-  :bind (([remap describe-variable] . helpful-variable)
-         ([remap describe-function] . helpful-callable)
-         ([remap describe-key] . helpful-key)
-         :map emacs-lisp-mode-map
-         ("C-c C-d" . helpers/helpful-at-point-dwim))
-
-  :init
-  (setq helpful-max-buffers 10))
-
-;; @see https://github.com/Wilfred/elisp-refs
-(use-package elisp-refs
-  :ensure t)
-
-;; @see eldoc
-(use-package eldoc
-  :ensure t
-  :diminish)
-
 (provide 'init-elisp)
 
 ;;; init-elisp ends here

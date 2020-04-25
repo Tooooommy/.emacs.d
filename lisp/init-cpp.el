@@ -2,12 +2,57 @@
 (use-package cc-mode
   :ensure nil
   :bind (:map c-mode-base-map
-              ("C-c c" . compile))
+         ("C-c c" . compile))
   :hook (c-mode-common . (lambda () (c-set-style "stroustrup")))
-  :init (setq-default c-basic-offset 4)
+  :init
+  (global-flycheck-mode 1)
+
+  (setq-default c-basic-offset 4)
   :config
+
+  (use-package irony
+    :ensure t
+    :commands
+    (irony-install-server irony--find-server-executable)
+    :hook
+    (((c++-mode c-mode) . irony-mode)
+     (irony-mode . irony-cdb-autosetup-compile-options))
+    :config
+    (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
+
+    (use-package company-irony
+      :ensure t
+      :after irony company
+      :config
+      (add-to-list 'company-backends 'company-irony))
+
+    (use-package company-c-headers
+      :ensure t
+      :config
+      (add-to-list 'company-backend 'company-c-headers))
+
+    (use-package flycheck-irony
+      :ensure t
+      :after flycheck
+      :hook (flycheck-mode . flycheck-irony-setup))
+
+    (use-package irony-eldoc
+      :ensure t
+      :hook (irony-mode . irony-eldoc)))
+
+  (use-package rtags
+    :ensure t
+    :defer t
+    :config
+    (rtags-enable-standard-keybindings)
+    (setq rtags-autostart-diagnostics t)
+    (rtags-diagnostics)
+    (setq rtags-completions-enable t))
+
   (use-package modern-cpp-font-lock
+    :ensure t
     :diminish
+    :defer 2
     :hook (after-init . modern-c++-font-lock-global-mode ))
 
   (use-package google-c-style
