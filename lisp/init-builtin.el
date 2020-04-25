@@ -1,24 +1,24 @@
-;; ;; 初始化画面
-;; (defun show-scratch-buffer-message ()
-;;   "Open the initial-scratch-message"
-;;   (interactive)
-;;   (let* ((fortune-prog (or (executable-find "fortune-zh")
-;;                            (executable-find "fortune"))))
-;;     (cond
-;;      (fortune-prog
-;;       (format
-;;        ";; %s\n\n"
-;;        (replace-regexp-in-string
-;;         "\n" "\n;; " ; comment each line
-;;         (replace-regexp-in-string
-;;          "\\(\n$\\|\\|\\[m *\\|\\[[0-9][0-9]m *\\)" ""    ; remove trailing linebreak
-;;          (shell-command-to-string fortune-prog)))))
-;;      (t
-;;       (concat ";; Happy hacking "
-;;               (or user-login-name "")
-;;               " - Emacs love you!\n\n")))))
+;; 初始化画面
+(defun show-scratch-buffer-message ()
+  "Open the initial-scratch-message"
+  (interactive)
+  (let* ((fortune-prog (or (executable-find "fortune-zh")
+                           (executable-find "fortune"))))
+    (cond
+     (fortune-prog
+      (format
+       ";; %s\n\n"
+       (replace-regexp-in-string
+        "\n" "\n;; " ; comment each line
+        (replace-regexp-in-string
+         "\\(\n$\\|\\|\\[m *\\|\\[[0-9][0-9]m *\\)" ""    ; remove trailing linebreak
+         (shell-command-to-string fortune-prog)))))
+     (t
+      (concat ";; Happy hacking "
+              (or user-login-name "")
+              " - Emacs love you!\n\n")))))
 
-;; (setq-default initial-scratch-message (show-scratch-buffer-message))
+(setq-default initial-scratch-message (show-scratch-buffer-message))
 
 ;; 默认配置
 (setq-default
@@ -57,10 +57,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)                     ; 改变询问字符
 
 ;; Suppress GUI features
-;; (setq use-file-dialog nil)
-;; (setq use-dialog-box nil)
-;; (setq inhibit-startup-screen t)
-;; (setq inhibit-startup-echo-area-message t)
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
 
 ;; 系统编码
 (when (fboundp 'set-charset-priority)
@@ -111,19 +111,22 @@
 
 ;; ido
 (use-package ido
-  :ensure t
+  :ensure nil
   :init (ido-mode 1))
 
 ;; ibuffer
 (use-package ibuffer
+  :ensure nil
   :bind ("C-x C-b" . ibuffer))
 
 ;; winner
 (use-package winner
+  :ensure nil
   :hook (after-init . winner-mode))
 
 ;; ediff
 (use-package ediff
+  :ensure nil
   :hook (ediff-quit . winner-undo))
 
 ;; saveplace
@@ -133,10 +136,12 @@
 
 ;; hl-line // 高亮当前行
 (use-package hl-line
+  :ensure nil
   :hook(after-init . global-hl-line-mode))
 
 ;; hideshow
 (use-package hideshow
+  :ensure nil
   :diminish hs-minor-mode
   :bind
   (:map prog-mode-map
@@ -153,9 +158,9 @@
              (go-mode "{" "}" "/[*/]" nil nil)))))
 
 ;; so-long
-(use-package so-long
-  :ensure nil
-  :hook (after-init .global-so-long-mode))
+;; (use-package so-long
+;;   :ensure nil
+;;   :hook (after-init .global-so-long-mode))
 
 ;; subword
 (use-package subword
@@ -164,6 +169,7 @@
 
 ;; paren
 (use-package paren
+  :ensure nil
   :hook (after-init . show-paren-mode)
   :config
   (setq show-paren-when-point-inside-paren t
@@ -171,11 +177,12 @@
 
 ;; autorevert
 (use-package autorevert
+  :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
 ;; recentf
 (use-package recentf
-  :ensure t
+  :ensure nil
   :hook (after-init . recentf-mode)
   :bind
   ("C-x C-r" . recentf-open-files)

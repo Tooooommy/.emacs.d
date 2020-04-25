@@ -31,9 +31,9 @@
 (require 'init-evil)
 (require 'init-keymap)
 (require 'init-gui)
-(require 'init-edit)
 (require 'init-treemacs)
 (require 'init-projectile)
+(require 'init-flycheck)
 
 ;; prog
 (require 'init-prog)
@@ -43,7 +43,6 @@
 (require 'init-git)
 (require 'init-eglot)
 (require 'init-company)
-(require 'init-flycheck)
 (require 'init-yasnippet)
 (require 'init-elisp)
 (require 'init-go)
