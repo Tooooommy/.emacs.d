@@ -125,10 +125,5 @@
                                                     go-errcheck))
                  (flycheck-golangci-lint-setup)))))
 
-;; @see https://github.com/grafov/go-playground
-(use-package go-playground
-  :ensure t 
-  :diminish)
-
 (provide 'init-go)
 ;;; init-go.el ends here
