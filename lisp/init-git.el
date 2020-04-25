@@ -49,13 +49,14 @@
            ("p" . git-messenger:popup-message)
            :map git-messenger-map
            ("m" . git-messenger:copy-message))
-    :init (setq git-messenger:use-magit-popup t)))
+    :init (setq git-messenger:use-magit-popup t))
 
-;; @see https://github.com/dgutov/diff-hl
-(use-package diff-hl
-  :ensure t
-  :hook((after-init . global-diff-hl-mode)
-        (dired-mode . diff-hl-mode)))
+  ;; @see https://github.com/dgutov/diff-hl
+  (use-package diff-hl
+    :ensure t
+    :hook(after-init . global-diff-hl-mode))
+  )
+
 
 (provide 'init-git)
 

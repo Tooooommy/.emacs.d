@@ -8,3 +8,6 @@ projectile-*
 keymap.html
 .lsp-session*
 elpa
+url
+places
+transient

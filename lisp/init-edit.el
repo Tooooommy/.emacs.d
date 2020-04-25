@@ -42,9 +42,25 @@
   :ensure t 
   :hook (after-init . global-aggressive-indent-mode))
 
+;; smex M-x
+;; @see https://github.com/nonsequitur/smex/
+(use-package smex
+  :ensure t
+  :hook (after-init . smex-initialize)
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)
+   ("C-c C-c M-x" . execute-extended-command)))
+
+;; rg search
+;; @see https://github.com/dajva/rg.el
+(use-package rg
+  :ensure t
+  :config (rg-enable-default-bindings))
+
+;; undo-tree 
 ;; @see http://www.dr-qubit.org/git/undo-tree.git
 ;; @see https://github.com/emacsmirror/undo-tree
-;; 撤回树
 (use-package undo-tree
   :load-path "~/.emacs.d/github/undo-tree-20170706.246"
   :diminish
@@ -58,19 +74,27 @@
         kept-old-versions 2
         version-control t))
 
-;; @see https://github.com/dajva/rg.el
-(use-package rg
-  :ensure t
-  :config (rg-enable-default-bindings))
+;; ibuffer to projectile
+(use-package ibuffer-projectile
+  :after ibuffer
+  :preface
+  (defun my/ibuffer-projectile ()
+    (ibuffer-projectile-set-filter-groups)
+    (unless (eq ibuffer-sorting-mode 'alphabetic)
+      (ibuffer-do-sort-by-alphabetic)))
+  :hook (ibuffer . my/ibuffer-projectile))
 
-;; @see https://github.com/nonsequitur/smex/
-(use-package smex
-  :ensure t
-  :hook (after-init . smex-initialize)
-  :bind
-  (("M-x" . smex)
-   ("M-X" . smex-major-mode-commands)
-   ("C-c C-c M-x" . execute-extended-command)))
+
+(use-package ibuffer-projectile
+  :after ibuffer
+  :preface
+  (defun my/ibuffer-projectile ()
+    (ibuffer-projectile-set-filter-groups)
+    (unless (eq ibuffer-sorting-mode 'alphabetic)
+      (ibuffer-do-sort-by-alphabetic)))
+  :hook (ibuffer . my/ibuffer-projectile))
+
+
 
 (provide 'init-edit)
 ;;; init-edit.el ends here

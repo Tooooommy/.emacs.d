@@ -47,12 +47,7 @@
     :bind (:map company-active-map
            ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
     :hook (global-company-mode . company-quickhelp-mode)
-    :init (setq company-quickhelp-delay 0.5))
-
-  ;; @see https://github.com/PythonNut/company-flx
-  (use-package company-flx
-    :ensure t
-    :hook (global-company-mode . company-flx-mode)))
+    :init (setq company-quickhelp-delay 0.5)))
 
   (provide 'init-company)
 ;;; init-company.el ends here

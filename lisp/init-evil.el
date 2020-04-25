@@ -4,14 +4,13 @@
   :init (setq evil-want-keybinding nil
               evil-ex-substitute-global t)
   :hook (after-init . evil-mode)
-  :bind (:map evil-motion-state-map ("C-u" . scroll-down-command)
-         :map evil-insert-state-map ([escape] . evil-normal-state))
+  :bind
+  (:map evil-motion-state-map
+   ("C-u" . scroll-down-command)
+   :map evil-insert-state-map
+   ([escape] . evil-normal-state))
 
   :config 
-  (evil-define-key 'normal go-mode-map "gd" 'godef-jump)
-  (evil-define-key 'normal go-mode-map "gp" 'godef-describe)
-  (evil-define-key 'normal go-mode-map "go" 'godef-jump-other-window)
-
   (setq evil-emacs-state-cursor '("red" box)
         evil-normal-state-cursor '("green" box)
         evil-visual-state-cursor '("orange" box)
@@ -45,11 +44,9 @@
     :ensure t 
     :diminish
     :demand t
-    :hook (after-init . evil-escape-mode)
+    :init(evil-escape-mode 1)
     :bind ("C-g" . evil-escape)
     :config (progn
-              (setq-default evil-escape-exclude-states '(normal visual multiedit emacs motion))
-              (setq-default evil-escape-exclude-major-modes '(neotree-mode))
               (setq-default evil-escape-key-sequence "jk")
               (setq-default evil-escape-delay 0.2)))
 
@@ -57,7 +54,7 @@
   (use-package evil-mc
     :ensure t
     :after evil
-    :hook (after-init . global-evil-mc-mode)
+    :init (global-evil-mc-mode 1)
     :config
     (evil-define-key 'visual evil-mc-key-map
       "A" #'evil-mc-make-cursor-in-visual-selection-end
@@ -66,13 +63,13 @@
   ;; @see ....
   (use-package treemacs-evil
     :ensure t
-    :after treemacs evil))
+    :after treemacs evil)
 
-;; @see https://github.com/emacs-evil/evil-collection
-;;(use-package evil-collection
-;;  :ensure t
-;;  :after evil
-;;  :config (evil-collection-init))
+  ;; @see https://github.com/emacs-evil/evil-collection
+  (use-package evil-collection
+    :ensure t
+    :after evil
+    :config (evil-collection-init)))
 
 (provide 'init-evil)
 

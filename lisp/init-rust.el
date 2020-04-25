@@ -18,8 +18,6 @@
     :ensure t
     :hook (flycheck-mode . flycheck-rust-setup)))
 
-;; @see https://github.com/grafov/rust-playground
-(use-package rust-playground
- :ensure t)
-
 (provide 'init-rust)
+
+;;; init-rust.el ends here

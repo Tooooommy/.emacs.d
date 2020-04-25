@@ -33,11 +33,5 @@
         doom-modeline-indent-info nil
         doom-modeline-env-version t))
 
-;; @see https://github.com/emacsorphanage/fancy-battery
-;; 电池显示
-(use-package fancy-battery
-  :after doom-modeline
-  :hook (after-init . fancy-battery-mode))
-
 (provide 'init-gui)
 ;;; init-gui.el ends here
