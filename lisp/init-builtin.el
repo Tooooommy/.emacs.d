@@ -187,7 +187,7 @@
   :bind
   ("C-x C-r" . recentf-open-files)
   :config
-  (run-at-time nil (* 5 60) 'recentf-save-list)
+  ;; (run-at-time nil (* 5 60) 'recentf-save-list)
   (setq recentf-max-menu-items 25)
   (setq recentf-max-saved-items 25))
 

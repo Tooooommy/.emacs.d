@@ -11,10 +11,12 @@
      (go-mode "{" "}" "/[*/]" nil nil))) t)
  '(package-selected-packages
    (quote
-    (nill yasnippet-snippets yaml-mode which-key use-package treemacs-projectile treemacs-magit treemacs-icons-dired treemacs-evil toc-org super-save sql-indent smex smartparens rtags-xref rg rainbow-delimiters quickrun ox-gfm org-tree-slide org-rich-yank org-preview-html org-pomodoro org-mime org-fancy-priorities org-bullets ob-rust ob-ipython ob-go nlinum-relative modern-cpp-font-lock markdown-toc magit-todos magit-gitflow lua-mode json-mode irony-eldoc imenu-list ibuffer-projectile highlight-defined helpful helm-ls-git gotest google-c-style godoctor go-tag go-impl go-gen-test go-fill-struct go-eldoc go-dlv git-timemachine git-messenger general forge flymake-rust flymake-golangci flymake-diagnostic-at-point flycheck-rtags flycheck-pos-tip flycheck-irony exec-path-from-shell evil-surround evil-nerd-commenter evil-mc evil-magit evil-escape elnode eglot-jl editorconfig dumb-jump doom-themes doom-modeline dockerfile-mode diff-hl company-rtags company-restclient company-quickhelp company-prescient company-irony company-c-headers cmake-ide cmake-font-lock clang-format cargo cal-china-x better-defaults auto-package-update aggressive-indent))))
+    (yasnippet-snippets yaml-mode which-key use-package treemacs-projectile treemacs-magit treemacs-icons-dired treemacs-evil toc-org super-save sql-indent smex smartparens rg rainbow-delimiters quickrun ox-gfm org-tree-slide org-rich-yank org-preview-html org-pomodoro org-mime org-fancy-priorities org-bullets ob-rust ob-ipython ob-go nlinum-relative modern-cpp-font-lock markdown-toc magit-todos magit-gitflow lua-mode json-mode ivy irony-eldoc imenu-list ibuffer-projectile highlight-defined helpful helm-ls-git gotest google-c-style godoctor go-tag go-impl go-gen-test go-fill-struct go-eldoc go-dlv git-timemachine git-messenger general forge flymake-rust flymake-golangci flymake-diagnostic-at-point flycheck-pos-tip flycheck-irony exec-path-from-shell evil-surround evil-nerd-commenter evil-mc evil-magit evil-escape elnode eglot-jl editorconfig dumb-jump doom-themes doom-modeline dockerfile-mode diff-hl company-restclient company-quickhelp company-prescient company-irony-c-headers company-irony company-ctags cmake-ide cmake-font-lock clang-format cargo cal-china-x better-defaults auto-package-update all-the-icons-ibuffer aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-pomodoro-mode-line ((t (:inherit warning))))
+ '(org-pomodoro-mode-line-break ((t (:inherit success))))
+ '(org-pomodoro-mode-line-overtime ((t (:inherit error)))))

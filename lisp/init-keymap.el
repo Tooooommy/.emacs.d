@@ -15,8 +15,7 @@
    which-key-side-window-max-height 0.25
    which-key-separator " → "
    which-key-prefix-prefix "+"
-   which-key-show-prefix 'left
-   which-key-show-remaining-keys t))
+   which-key-show-prefix 'left which-key-show-remaining-keys t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; vim keymap
@@ -38,7 +37,6 @@
 ;; space leader
 (leader-key "SPC" '(smex :wk "command line"))
 (leader-key "0" '(treemacs-select-window :wk "select treemacs"))
-
 ;; comments
 (leader-key "c" '(:wk "comment")
   "cc" '(evilnc-comment-or-uncomment-lines :wk "lines")
@@ -134,10 +132,7 @@
   "mxx" '(go-run :wk "run")
   "mxt" '(go-test-current-test :wk "test")
   "mxf" '(go-run :wk "format")
-  "mxr" '(eglot-rename :wk "rename")
-  "mxc" '(go-coverage :wk "coverage")
-  "mxb" '(go-play-buffer :wk "play buffer")
-  "mxe" '(go-play-region :wk "play region")
+  "mxr" '(godoctor-rename :wk "rename")
   "mxh" '(godoc-at-point :wk "godoc")
   "mxi" '(go-impl :wk "impl")
   "mxs" '(go-fill-struct :wk "fill struct")
@@ -166,6 +161,43 @@
   "mxr" '(eglot-rename :wk "rename")
   "mxh" '(cargo-process-doc-open :wk "doc")
   "mxc" '(rust-compile :wk "compile"))
+
+;; version control
+(leader-key "v" '(:wk "version control")
+  "vi" '(magit-init :wk "git init")
+  "va" '(magit-stage-modified :wk "git add")
+  "vc" '(magit-commit-create :wk "git commit")
+  "vs" '(magit-status :wk "git status")
+  "vo" '(magit-checkout :wk "git checkout")
+  "vl" '(magit-log-all :wk "git log")
+  "vm" '(magit-tag-create :wk "git tag")
+  "v." '(magit-gitignore-in-topdir :wk "git ignore")
+
+  "vb" '(:wk "git branch")
+  "vbc" '(magit-branch-checkout :wk "checkout")
+  "vbn" '(magit-branch-create :wk "create")
+  "vbd" '(magit-branch-delete :wk "delete")
+  "vbr" '(magit-branch-rename :wk "rename")
+  "vbl" '(magit-branch :wk "list")
+
+
+  "vt" '(:wk "git timemachine")
+  "vtt" '(git-timemachine-toggle :wk "toggle timemachine")
+  "vtp" '(git-timemachine-show-previous-revision :wk "prev history")
+  "vtn" '(git-timemachine-show-next-revision :wk "next history")
+  "vtq" '(git-timemachine-quit :wk "quit timemachine")
+  "vtw" '(git-timemachine-kill-revision :wk "kill revision")
+
+  "vg" '(:wk "git")
+  "vgm" '(magit-merge :wk "git merge")
+  "vgs" '(magit-reset :wk "git reset")
+  "vgr" '(magit-rebase :wk "git rebase")
+  "vgc" '(magit-clone :wk "git clone")
+  "vgp" '(magit-pull :wk "git pull")
+  "vgf" '(magit-fetch :wk "git fetch")
+  "vgu" '(magit-push :wk "git push")
+  "vgb" '(magit-blame :wk "git branch")
+  )
 
 (provide 'init-keymap)
 

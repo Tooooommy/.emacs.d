@@ -3,33 +3,35 @@
   :ensure nil
   :bind (:map c-mode-base-map
          ("C-c c" . compile))
-  :hook (c-mode-common . (lambda () (c-set-style "stroustrup")))
   :init
   (global-flycheck-mode 1)
-
+  (setq-default c-default-style "linux")
   (setq-default c-basic-offset 4)
   :config
-
   (use-package irony
     :ensure t
     :commands
     (irony-install-server irony--find-server-executable)
     :hook
-    (((c++-mode c-mode) . irony-mode)
-     (irony-mode . irony-cdb-autosetup-compile-options))
+    ((c++-mode c-mode) . irony-mode)
     :config
     (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
+    (add-to-list 'irony-additional-clang-options "-std=c++11")
+    (setq irony--server-executable (expand-file-name "irony/bin/irony-server" user-emacs-directory))
 
     (use-package company-irony
       :ensure t
       :after irony company
+      :hook (irony-mode . company-irony-setup-begin-commands)
       :config
+      (setq company-backends (delete 'company-semantic company-backends))
       (add-to-list 'company-backends 'company-irony))
 
-    (use-package company-c-headers
+    (use-package company-irony-c-headers
       :ensure t
+      :after irony company
       :config
-      (add-to-list 'company-backend 'company-c-headers))
+      (add-to-list 'company-backend 'company-irony-c-headers))
 
     (use-package flycheck-irony
       :ensure t
@@ -40,14 +42,13 @@
       :ensure t
       :hook (irony-mode . irony-eldoc)))
 
-  (use-package rtags
+  (use-package company-ctags
     :ensure t
-    :defer t
+    :after company
     :config
-    (rtags-enable-standard-keybindings)
-    (setq rtags-autostart-diagnostics t)
-    (rtags-diagnostics)
-    (setq rtags-completions-enable t))
+    (setq company-ctags-extra-tags-files '("$HOME/TAGS" "/usr/include/TAGS"))
+    (company-ctags-auto-setup)
+    )
 
   (use-package modern-cpp-font-lock
     :ensure t
@@ -56,9 +57,9 @@
     :hook (after-init . modern-c++-font-lock-global-mode ))
 
   (use-package google-c-style
-    :hook
-    ((c-mode c++-mode) . google-set-c-style)
-    (c-mode-common . google-make-newline-indent))
+    :hook (c-mode-common . (lambda ()
+                             (google-set-c-style)
+                             (google-make-newline-indent))))
 
   (use-package cmake-mode
     :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))

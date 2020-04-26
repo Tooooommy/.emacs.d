@@ -9,7 +9,11 @@
   :config 
   (require 'smartparens-config)
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-  (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil))
+  (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
+  (sp-with-modes '(c-mode c++-mode)
+    (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
+    (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
+  )
 
 ;; @see https://github.com/xcodebuild/nlinum-relative
 (use-package nlinum-relative
