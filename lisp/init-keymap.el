@@ -164,39 +164,80 @@
 
 ;; version control
 (leader-key "v" '(:wk "version control")
+
   "vi" '(magit-init :wk "git init")
   "va" '(magit-stage-modified :wk "git add")
-  "vc" '(magit-commit-create :wk "git commit")
-  "vs" '(magit-status :wk "git status")
+  "vy" '(magit-status-here :wk "git status")
   "vo" '(magit-checkout :wk "git checkout")
-  "vl" '(magit-log-all :wk "git log")
-  "vm" '(magit-tag-create :wk "git tag")
   "v." '(magit-gitignore-in-topdir :wk "git ignore")
 
-  "vb" '(:wk "git branch")
-  "vbc" '(magit-branch-checkout :wk "checkout")
-  "vbn" '(magit-branch-create :wk "create")
+  "vb" '(:wk "git branch") ;; branch
+  "vbo" '(magit-branch-checkout :wk "checkout")
+  "vbc" '(magit-branch-create :wk "create")
   "vbd" '(magit-branch-delete :wk "delete")
   "vbr" '(magit-branch-rename :wk "rename")
-  "vbl" '(magit-branch :wk "list")
+  "vbh" '(magit-branch :wk "help")
 
+  "vc" '(:wk "commit & reset & revert") ;; commit 
+  "vcc" '(magit-commit :wk "commit")
+  "vcn" '(magit-commit-create :wk "create")
+  "vce" '(magit-reset :wk "reset")
+  "vch" '(magit-reset-hard :wk "reset hard")
+  "vcs" '(magit-reset-soft :wk "reset soft")
+  "vcm" '(magit-reset-mixed :wk "reset mixed")
+  "vcd" '(magit-revert :wk "revert")
+  "vcr" '(magit-revert-and-commit :wk "revert commit")
+  "vco" '(magit-revert-no-commit :wk "revert no commit")
 
-  "vt" '(:wk "git timemachine")
-  "vtt" '(git-timemachine-toggle :wk "toggle timemachine")
-  "vtp" '(git-timemachine-show-previous-revision :wk "prev history")
-  "vtn" '(git-timemachine-show-next-revision :wk "next history")
-  "vtq" '(git-timemachine-quit :wk "quit timemachine")
-  "vtw" '(git-timemachine-kill-revision :wk "kill revision")
+  "vt" '(:wk "git tag") ;; tag
+  "vtc" '(magit-tag-create :wk "create")
+  "vtd" '(magit-tag-delete :wk "delete")
+  "vtr" '(magit-tag-release :wk "release")
+  "vtp" '(magit-tag-prune :wk "push")
+  "vth" '(magit-tag :wk "help")
 
-  "vg" '(:wk "git")
-  "vgm" '(magit-merge :wk "git merge")
-  "vgs" '(magit-reset :wk "git reset")
-  "vgr" '(magit-rebase :wk "git rebase")
-  "vgc" '(magit-clone :wk "git clone")
-  "vgp" '(magit-pull :wk "git pull")
-  "vgf" '(magit-fetch :wk "git fetch")
-  "vgu" '(magit-push :wk "git push")
-  "vgb" '(magit-blame :wk "git branch")
+  "vs" '(:wk "reset & stage") ;; set
+  "vsa" '(magit-stage-modified :wk "stage all")
+  "vsf" '(magit-stage-file :wk "stage file")
+
+  "vm" '(:wk "merge & rebase") ;; merge
+  "vmm" '(magit-merge :wk "merge")
+  "vmi" '(magit-merge-into :wk "merge into")
+  "vmq" '(magit-merge-abort :wk "merge abort")
+  "vmv" '(magit-merge-preview :wk "merge preview")
+  "vmr" '(magit-rebase :wk "rebase")
+  "vme" '(magit-rebase-edit :wk "rebase edit")
+  "vms" '(magit-rebase-skip :wk "rebase skip")
+  "vma" '(magit-rebase-abort :wk "rebase abort")
+  "vmc" '(magit-rebase-continue :wk "rebase continue")
+  "vma" '(magit-rebase-interactive :wk "rebase interactive")
+
+  "vl" '(:wk "log") ;; log
+  "vll" '(magit-log :wk "help")
+  "vla" '(magit-log-all :wk "all")
+  "vlh" '(magit-log-head :wk "head")
+
+  "vp" '(:wk "pull & push & fetch")
+  "vpp" '(magit-pull :wk "pull")
+  "vpb" '(magit-pull-branch :wk "pull branch")
+  "vps" '(magit-pull-from-upstream :wk "pull upstream")
+  "vpu" '(magit-push :wk "push")
+  "vpc" '(magit-push-current :wk "push current")
+  "vpo" '(magit-push-other :wk "push other")
+  "vpt" '(magit-push-tag :wk "push tag")
+  "vpf" '(magit-fetch :wk "fetch")
+  "vpa" '(magit-fetch-all :wk "fetch all")
+  "vpe" '(magit-fetch-branch :wk "fetch branch")
+
+  "vz" '(:wk "git timemachine")
+  "vzt" '(git-timemachine-toggle :wk "toggle timemachine")
+  "vzp" '(git-timemachine-show-previous-revision :wk "prev history")
+  "vzn" '(git-timemachine-show-next-revision :wk "next history")
+  "vzq" '(git-timemachine-quit :wk "quit timemachine")
+  "vzw" '(git-timemachine-kill-revision :wk "kill revision")
+
+  "vx" '(magit-clone :wk "clone")
+  "vv" '(magit-version :wk "version")
   )
 
 (provide 'init-keymap)

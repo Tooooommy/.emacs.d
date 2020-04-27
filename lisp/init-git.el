@@ -19,27 +19,20 @@
     :ensure t
     :demand)
 
-  ;; @see https://github.com/alphapapa/magit-todos
-  (use-package magit-todos
-    :ensure t
-    :config (magit-todos-mode t))
-
   ;; @see https://gitlab.com/pidu/git-timemachine
   (use-package git-timemachine
-    :ensure t)
+    :ensure t))
 
-  ;; @see https://github.com/dgutov/diff-hl
-  (use-package diff-hl
-    :ensure t
-    :hook (after-init . global-diff-hl-mode)
-    :config
-    (diff-hl-dir-mode)
-    (advice-add 'svn-status-update-modeline :after #'diff-hl-update)
-    (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-    )
+;; @see https://github.com/dgutov/diff-hl
+(use-package diff-hl
+  :ensure t
+  :hook (after-init . global-diff-hl-mode)
+  :config
+  (diff-hl-dir-mode)
+  (advice-add 'svn-status-update-modeline :after #'diff-hl-update)
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   )
-
 
 
 
