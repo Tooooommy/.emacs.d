@@ -4,7 +4,6 @@
   :bind (:map c-mode-base-map
          ("C-c c" . compile))
   :init
-  (global-flycheck-mode 1)
   (setq-default c-default-style "linux")
   (setq-default c-basic-offset 4)
   :config

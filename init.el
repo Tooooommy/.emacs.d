@@ -33,7 +33,6 @@
 (require 'init-gui)
 (require 'init-treemacs)
 (require 'init-projectile)
-(require 'init-flycheck)
 
 ;; prog
 (require 'init-prog)

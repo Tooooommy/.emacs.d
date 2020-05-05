@@ -84,16 +84,6 @@
         kept-old-versions 2
         version-control t))
 
-;; ibuffer to projectile
-(use-package ibuffer-projectile
-  :after ibuffer
-  :preface
-  (defun my/ibuffer-projectile ()
-    (ibuffer-projectile-set-filter-groups)
-    (unless (eq ibuffer-sorting-mode 'alphabetic)
-      (ibuffer-do-sort-by-alphabetic)))
-  :hook (ibuffer . my/ibuffer-projectile))
-
 ;; @see https://github.com/nonsequitur/smex/
 (use-package smex
   :ensure t
