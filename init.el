@@ -26,7 +26,6 @@
 (require 'init-helpers)
 
 (require 'init-builtin)
-(require 'init-misc)
 (require 'init-calendar)
 (require 'init-evil)
 (require 'init-keymap)
