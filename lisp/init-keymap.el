@@ -84,12 +84,19 @@
   "er" '(evil-mc-resume-cursors :wk "mc resume cursor"))
 
 ;; files
-(leader-key "f" '(:wk "file")
+(leader-key "f" '(:wk "file & pomidor")
   "ff" '(ido-find-file :wk "find")
+  "fe" '(helpers/open-init-file :wk "init.el")
   "fs" '(save-buffer :wk "save")
   "ft" '(treemacs :wk "treemacs")
   "fr" '(quickrun :wk "quickrun")
-  "fe" '(helpers/open-init-file :wk "init.el"))
+
+  "fp" '(:wk "pomidor") ;; 番茄计时
+  "fpp" '(pomidor :wk "start")
+  "fpb" '(pomidor-break :wk "break")
+  "fpr" '(pomidor-reset :wk "reset")
+  "fps" '(pomidor-stop :wk "stop")
+  "fpq" '(pomidor-quit :wk "quit"))
 
 ;; help
 (leader-key "h" '(:wk "help")
