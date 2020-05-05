@@ -1,56 +1,3 @@
-;; 初始化画面
-(defun show-scratch-buffer-message ()
-  "Open the initial-scratch-message"
-  (interactive)
-  (let* ((fortune-prog (or (executable-find "fortune-zh")
-                           (executable-find "fortune"))))
-    (cond
-     (fortune-prog
-      (format
-       ";; %s\n\n"
-       (replace-regexp-in-string
-        "\n" "\n;; " ; comment each line
-        (replace-regexp-in-string
-         "\\(\n$\\|\\|\\[m *\\|\\[[0-9][0-9]m *\\)" ""    ; remove trailing linebreak
-         (shell-command-to-string fortune-prog)))))
-     (t
-      (concat ";; Happy hacking "
-              (or user-login-name "")
-              " - Emacs love you!\n\n")))))
-
-(setq-default initial-scratch-message (show-scratch-buffer-message))
-
-;; 默认配置
-(setq-default
- ad-redefinition-action 'accept                   ; Silence warnings for redefinition
- cursor-in-non-selected-windows t                 ; Hide the cursor in inactive windows
- fill-column 80                                   ; Set width for automatic line breaks
- help-window-select t                             ; Focus new help windows when opened
- kill-ring-max 128                                ; Maximum length of kill ring
- load-prefer-newer t                              ; Prefers the newest version of a file
- mark-ring-max 128                                ; Maximum length of mark ring
- scroll-conservatively most-positive-fixnum       ; Always scroll by one line
- select-enable-clipboard t                        ; Merge system's and Emacs' clipboard
- tab-width 4                                      ; Set width for tabs
- user-full-name "Tooooommy"                       ; Set the full name of the current user
- user-mail-address "tooooommy@163.com"            ; Set the email address of the current user
- vc-follow-symlinks t                             ; Always follow the symlinks
- view-read-only t                                 ; Always open read-only buffers in view-mode
- delete-by-moving-to-trash t
- visible-bell t
- inhibit-compacting-font-caches t
- use-package-always-ensure t
- make-backup-files nil
- auto-save-default nil
- uniquify-buffer-name-style 'post-forward-angle-brackets ; Show path if names are same
- adaptive-fill-regexp "[ t]+|[ t]*([0-9]+.|*+)[ t]*"
- adaptive-fill-first-line-regexp "^* *$"
- sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
- sentence-end-double-space nil
- indicate-empty-lines t
- initial-major-mode 'fundamental-mode
- )
-
 ;; 显示设置
 (cd "~/")                                         ; 切换到主目录
 (display-time-mode 1)                             ; 在modeline 加上时间
@@ -83,7 +30,7 @@
 (set-frame-font "Source Code Pro 12")
 
 ;; 编辑器标题
-(setq frame-title-format '("Tommy Emacs - %b")
+(setq frame-title-format '("Tooooommy Emacs - %b")
       icon-title-format frame-title-format)
 
 ;; 初始化调整窗口
@@ -179,17 +126,6 @@
 (use-package autorevert
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
-
-;; recentf
-(use-package recentf
-  :ensure nil
-  :hook (after-init . recentf-mode)
-  :bind
-  ("C-x C-r" . recentf-open-files)
-  :config
-  ;; (run-at-time nil (* 5 60) 'recentf-save-list)
-  (setq recentf-max-menu-items 25)
-  (setq recentf-max-saved-items 25))
 
 ;; windmove
 (use-package windmove

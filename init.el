@@ -43,6 +43,7 @@
 (require 'init-git)
 (require 'init-eglot)
 (require 'init-company)
+(require 'init-tabnine)
 (require 'init-yasnippet)
 (require 'init-elisp)
 (require 'init-go)

@@ -2,7 +2,6 @@
 (use-package eglot
   :ensure t
   :hook
-  ((go-mode
-    rust-mode) . eglot-ensure))
+  (prog-mode . eglot-ensure))
 
 (provide 'init-eglot)

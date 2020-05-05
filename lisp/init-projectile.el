@@ -22,9 +22,6 @@
   (let ((val (or (getenv "P4CONFIG") ".p4config")))
     (add-to-list 'projectile-project-root-files-bottom-up val)))
 
-
-
-
 (provide 'init-projectile)
 
 ;; init-projectile.el ends here

@@ -8,40 +8,6 @@
   (setq-default c-default-style "linux")
   (setq-default c-basic-offset 4)
   :config
-  (use-package irony
-    :ensure t
-    :commands
-    (irony-install-server irony--find-server-executable)
-    :hook
-    ((c++-mode c-mode) . irony-mode)
-    :config
-    (unless (irony--find-server-executable) (call-interactively #'irony-install-server))
-    (add-to-list 'irony-additional-clang-options "-std=c++11")
-    (setq irony--server-executable (expand-file-name "irony/bin/irony-server" user-emacs-directory))
-
-    (use-package company-irony
-      :ensure t
-      :after irony company
-      :hook (irony-mode . company-irony-setup-begin-commands)
-      :config
-      (setq company-backends (delete 'company-semantic company-backends))
-      (add-to-list 'company-backends 'company-irony))
-
-    (use-package company-irony-c-headers
-      :ensure t
-      :after irony company
-      :config
-      (add-to-list 'company-backend 'company-irony-c-headers))
-
-    (use-package flycheck-irony
-      :ensure t
-      :after flycheck
-      :hook (flycheck-mode . flycheck-irony-setup))
-
-    (use-package irony-eldoc
-      :ensure t
-      :hook (irony-mode . irony-eldoc)))
-
   (use-package company-ctags
     :ensure t
     :after company
