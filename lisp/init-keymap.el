@@ -130,7 +130,6 @@
 ;; golang
 (leader-key "m" '(:wk "golang")
   :keymaps 'go-mode-map 
-
   "mi" '(:wk "import")
   "mig" '(go-goto-imports :wk "goto imports")
   "mia" '(go-import-add :wk "add import")
