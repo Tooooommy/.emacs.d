@@ -46,14 +46,23 @@
   "cr" '(comment-or-uncomment-region :wk "region"))
 
 ;; buffers
-(leader-key "b" '(:wk "buffer")
+(leader-key "b" '(:wk "buffer & bookmark")
   "bb" '(ibuffer :wk "list")
   "bn" '(evil-next-buffer :wk "next")
   "bp" '(evil-prev-buffer :wk "previous")
   "bc" '(evil-buffer-new :wk "create")
   "bd" '(evil-delete-buffer :wk "delete")
   "bg" '(ibuffer-jump :wk "jump")
-  "bm" '(helpers/kill-other-buffer :wk "kill other"))
+  "bm" '(helpers/kill-other-buffer :wk "kill other")
+
+  "bm" '(:wk "bookmark")
+  "bmb" '(list-bookmarks :wk "list")
+  "bmm" '(bookmark-set :wk "mark")
+  "bms" '(bookmark-save :wk "save")
+  "bmd" '(bookmark-delete :wk "delete")
+  "bml" '(bookmark-load :wk "load")
+  "bmj" '(bookmark-jump :wk "jump")
+  )
 
 ;; edit
 (leader-key "e" '(:wk "edit")
@@ -78,17 +87,8 @@
 (leader-key "f" '(:wk "file")
   "ff" '(ido-find-file :wk "find")
   "fs" '(save-buffer :wk "save")
-  "ft" '(treemacs :wk "tree")
-  "fr" '(recentf-open-files :wk "recentf")
-  "fe" '(helpers/open-init-file :wk "init.el")
-  "fm" '(smex :wk "smex")
-  "fb" '(:wk "bookmark")
-  "fbb" '(list-bookmarks :wk "list")
-  "fbm" '(bookmark-set :wk "mark")
-  "fbs" '(bookmark-save :wk "save")
-  "fbd" '(bookmark-delete :wk "delete")
-  "fbl" '(bookmark-load :wk "load")
-  "fbj" '(bookmark-jump :wk "jump"))
+  "ft" '(treemacs :wk "treemacs")
+  "fe" '(helpers/open-init-file :wk "init.el"))
 
 ;; help
 (leader-key "h" '(:wk "help")
@@ -228,13 +228,6 @@
   "vpf" '(magit-fetch :wk "fetch")
   "vpa" '(magit-fetch-all :wk "fetch all")
   "vpe" '(magit-fetch-branch :wk "fetch branch")
-
-  "vz" '(:wk "git timemachine")
-  "vzt" '(git-timemachine-toggle :wk "toggle timemachine")
-  "vzp" '(git-timemachine-show-previous-revision :wk "prev history")
-  "vzn" '(git-timemachine-show-next-revision :wk "next history")
-  "vzq" '(git-timemachine-quit :wk "quit timemachine")
-  "vzw" '(git-timemachine-kill-revision :wk "kill revision")
 
   "vx" '(magit-clone :wk "clone")
   "vv" '(magit-version :wk "version")

@@ -18,10 +18,7 @@
   (use-package forge
     :ensure t
     :demand)
-
-  ;; @see https://gitlab.com/pidu/git-timemachine
-  (use-package git-timemachine
-    :ensure t))
+  )
 
 ;; @see https://github.com/dgutov/diff-hl
 (use-package diff-hl
