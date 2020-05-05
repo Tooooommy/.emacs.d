@@ -118,5 +118,10 @@
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
+
+;; @see https://github.com/emacsorphanage/quickrun
+(use-package quickrun
+  :ensure t)
+
 (provide 'init-misc)
 ;;; init-misc.el here ends

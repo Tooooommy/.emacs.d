@@ -88,6 +88,7 @@
   "ff" '(ido-find-file :wk "find")
   "fs" '(save-buffer :wk "save")
   "ft" '(treemacs :wk "treemacs")
+  "fr" '(quickrun :wk "quickrun")
   "fe" '(helpers/open-init-file :wk "init.el"))
 
 ;; help
