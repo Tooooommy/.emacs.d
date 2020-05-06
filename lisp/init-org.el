@@ -8,7 +8,7 @@
   (setq org-agenda-files '("~/Documents/org/agenda")
         org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-          (sequence "#(T)" "...(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+          (sequence "#(T)" "@(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
         org-todo-keyword-faces '(("HANGUP" . warning)
                                  ("❓" . warning))
         org-priority-faces '((?A . error)
@@ -118,7 +118,7 @@
   (use-package org-rich-yank
     :ensure t
     :bind (:map org-mode-map
-                ("C-M-y" . org-rich-yank)))
+           ("C-M-y" . org-rich-yank)))
 
   ;; Table of contents
   ;; @see https://github.com/snosov1/toc-org
