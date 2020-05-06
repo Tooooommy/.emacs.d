@@ -4,6 +4,26 @@
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb))
   :config
+  ;; To speed up startup, don't put to init section
+  (setq org-agenda-files '("~/Documents/org/agenda")
+        org-todo-keywords
+        '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
+          (sequence "#(T)" "...(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+        org-todo-keyword-faces '(("HANGUP" . warning)
+                                 ("❓" . warning))
+        org-priority-faces '((?A . error)
+                             (?B . warning)
+                             (?C . success))
+        org-tags-column -80
+        org-log-done 'time
+        org-catch-invisible-edits 'smart
+        org-startup-indented t
+        org-ellipsis (if (char-displayable-p ?) "  " nil)
+        org-pretty-entities nil
+        org-hide-emphasis-markers t)
+
+  (add-to-list 'org-structure-template-alist '("n" . "note"))
+
   ;; Babel
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
@@ -35,6 +55,7 @@
 
   (org-babel-do-load-languages 'org-babel-load-languages
                                load-language-list)
+
 
   ;; @see https://github.com/integral-dw/org-superstar-mode
   (use-package org-superstar
@@ -86,79 +107,18 @@
     :ensure t
     :defer t)
 
-  ;; @see https://github.com/alphapapa/org-super-agenda
-  (use-package org-super-agenda
-    :ensure t
-    :config
-    (let ((org-super-agenda-groups
-           '(;; Each group has an implicit boolean OR operator between its selectors.
-             (:name "Today"  ; Optionally specify section name
-              :time-grid t  ; Items that appear on the time grid
-              :todo "TODAY")  ; Items that have this TODO keyword
-             (:name "Important"
-              ;; Single arguments given alone
-              :tag "bills"
-              :priority "A")
-             ;; Set order of multiple groups at once
-             (:order-multi (2 (:name "Shopping in town"
-                               ;; Boolean AND group matches items that match all subgroups
-                               :and (:tag "shopping" :tag "@town"))
-                              (:name "Food-related"
-                               ;; Multiple args given in list with implicit OR
-                               :tag ("food" "dinner"))
-                              (:name "Personal"
-                               :habit t
-                               :tag "personal")
-                              (:name "Space-related (non-moon-or-planet-related)"
-                               ;; Regexps match case-insensitively on the entire entry
-                               :and (:regexp ("space" "NASA")
-                                     ;; Boolean NOT also has implicit OR between selectors
-                                     :not (:regexp "moon" :tag "planet")))))
-             ;; Groups supply their own section names when none are given
-             (:todo "WAITING" :order 8)  ; Set order of this section
-             (:todo ("SOMEDAY" "TO-READ" "CHECK" "TO-WATCH" "WATCHING")
-              ;; Show this group at the end of the agenda (since it has the
-              ;; highest number). If you specified this group last, items
-              ;; with these todo keywords that e.g. have priority A would be
-              ;; displayed in that group instead, because items are grouped
-              ;; out in the order the groups are listed.
-              :order 9)
-             (:priority<= "B"
-              ;; Show this section after "Today" and "Important", because
-              ;; their order is unspecified, defaulting to 0. Sections
-              ;; are displayed lowest-number-first.
-              :order 1)
-             ;; After the last group, the agenda will display items that didn't
-             ;; match any of these groups, with the default order position of 99
-             )))
-      (org-agenda nil "a")))
-
   ;; @see https://github.com/Kungsgeten/org-brain
   (use-package org-brain
     :ensure t
     :init
-    (setq org-brain-path "~/Documents/org/brain/")
-    ;; For Evil users
-    (with-eval-after-load 'evil
-      (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-    :config
-    (setq org-id-track-globally t)
-    (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
-    (add-hook 'before-save-hook #'org-brain-ensure-ids-in-buffer)
-    (push '("b" "Brain" plain (function org-brain-goto-end)
-            "* %i%?" :empty-lines 1)
-          org-capture-templates)
-    (setq org-brain-visualize-default-choices 'all)
-    (setq org-brain-title-max-length 12)
-    (setq org-brain-include-file-entries nil
-          org-brain-file-entries-use-title nil))
+    (setq org-brain-path "~/Documents/org/brain/"))
 
   ;; Rich text clipboard
   ;; @see https://github.com/unhammer/org-rich-yank
   (use-package org-rich-yank
     :ensure t
     :bind (:map org-mode-map
-           ("C-M-y" . org-rich-yank)))
+                ("C-M-y" . org-rich-yank)))
 
   ;; Table of contents
   ;; @see https://github.com/snosov1/toc-org
@@ -166,7 +126,6 @@
     :ensure t
     :hook (org-mode . toc-org-mode))
 
-  ;; Preview
   ;; @see https://github.com/lujun9972/org-preview-html
   (use-package org-preview-html
     :ensure t
