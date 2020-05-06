@@ -1,3 +1,26 @@
+;; 初始化画面	
+(defun show-scratch-buffer-message ()	
+  "Open the initial-scratch-message"	
+  (interactive)	
+  (let* ((fortune-prog (or (executable-find "fortune-zh")	
+                           (executable-find "fortune"))))	
+    (cond	
+     (fortune-prog	
+      (format	
+       ";; %s\n\n"	
+       (replace-regexp-in-string	
+        "\n" "\n;; " ; comment each line	
+        (replace-regexp-in-string	
+         "\\(\n$\\|\\|\\[m *\\|\\[[0-9][0-9]m *\\)" ""    ; remove trailing linebreak	
+         (shell-command-to-string fortune-prog)))))	
+     (t	
+      (concat ";; Happy hacking "	
+              (or user-login-name "")	
+              " - Emacs love you!\n\n")))))	
+
+(setq-default initial-scratch-message (show-scratch-buffer-message))
+(setq initial-major-mode 'fundamental-mode)
+
 ;; 显示设置
 (cd "~/")                                         ; 切换到主目录
 (display-time-mode 1)                             ; 在modeline 加上时间
