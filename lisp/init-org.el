@@ -2,15 +2,20 @@
 (use-package org
   :ensure t
   :bind (("C-c a" . org-agenda)
-         ("C-c b" . org-switchb))
+         ("C-c c" . org-capture)
+         ("C-c b" . org-switchb)
+         ("C-c w" . org-refile))
   :config
   ;; To speed up startup, don't put to init section
   (setq org-agenda-files '("~/Documents/org/agenda")
         org-todo-keywords
-        '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-          (sequence "#(T)" "@(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
-        org-todo-keyword-faces '(("HANGUP" . warning)
-                                 ("❓" . warning))
+        '((sequence "TODO" "DOING" "DELAY" "|" "DONE" "CANCEL"))
+        org-todo-keyword-faces
+        '(("TODO" . (:foreground "#FF4500" :weight bold))
+          ("DOING" . (:foreground "#33cc33" :weight bold))
+          ("DELAY" . (:foreground "black" :weight bold))
+          ("DONE" . (:foreground "#27AE60" :weight bold))
+          )
         org-priority-faces '((?A . error)
                              (?B . warning)
                              (?C . success))
@@ -22,7 +27,21 @@
         org-pretty-entities nil
         org-hide-emphasis-markers t)
 
-  (add-to-list 'org-structure-template-alist '("n" . "note"))
+  (setq org-capture-templates
+        '(("i" "inbox" entry (file+headline "~/Documents/org/agenda/inbox.org" "inbox")
+           "* TODO [#B] %U %i%?" :empty-lines 1)
+          ("s" "someday" entry (file+headline "~/Documents/org/agenda/someday.org" "some day")
+           "* TODO [#C] %U %i%?" :empty-lines 1)
+          ("g" "GTD" entry (file+datetree "~/Documents/org/agenda/gtd.org")
+           "* TODO [#B] %U %i%?" :empty-lines 1)
+          ))
+  (setq org-refile-targets
+        '(("~/Documents/org/agenda/someday.org" :level . 1)
+          ("~/Documents/org/agenda/gtd.org" :maxlevel . 3)))
+  
+  ;; @see https://github.com/marcinkoziej/org-pomodoro
+  (use-package org-pomodoro
+    :ensure t)
 
   ;; Babel
   (setq org-confirm-babel-evaluate nil
@@ -129,7 +148,9 @@
   ;; @see https://github.com/lujun9972/org-preview-html
   (use-package org-preview-html
     :ensure t
-    :diminish))
+    :diminish)
+
+  )
 
 (provide 'init-org)
 

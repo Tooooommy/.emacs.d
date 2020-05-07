@@ -152,12 +152,7 @@
 
 ;; windmove
 (use-package windmove
-  :ensure nil
-  :bind
-  ("C-c h" . 'windmove-left)
-  ("C-c j" . 'windmove-down)
-  ("C-c k" . 'windmove-up)
-  ("C-c l" . 'windmove-right))
+  :ensure nil)
 
 ;; imenu
 (use-package imenu

@@ -91,12 +91,12 @@
   "ft" '(treemacs :wk "treemacs")
   "fr" '(quickrun :wk "quickrun")
 
-  "fp" '(:wk "pomidor") ;; 番茄计时
-  "fpp" '(pomidor :wk "start")
-  "fpb" '(pomidor-break :wk "break")
-  "fpr" '(pomidor-reset :wk "reset")
-  "fps" '(pomidor-stop :wk "stop")
-  "fpq" '(pomidor-quit :wk "quit"))
+  "fo" '(:wk "org")
+  "foa" '(org-agenda :wk "agenda")
+  "foc" '(org-capture :wk "capture")
+  "fow" '(org-refile :wk "refile")
+  "fog" '(helpers/org-refile-to-datetree :wk "refile to gtd")
+  "fop" '(org-pomodoro :wk "pomodoro"))
 
 ;; help
 (leader-key "h" '(:wk "help")

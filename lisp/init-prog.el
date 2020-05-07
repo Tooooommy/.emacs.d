@@ -199,19 +199,5 @@
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
-;; @see https://github.com/TatriX/pomidor
-(use-package pomidor
-  :ensure t
-  :bind
-  (("<f12>" . pomidor))
-  :config
-  (setq pomidor-sound-tick nil
-        pomidor-sound-tack nil)
-  :hook (pomidor-mode . (lambda ()
-                          (display-line-numbers-mode -1)
-                          (setq left-fringe-width 0 right-fringe-width 0)
-                          (setq left-margin-width 2 right-margin-width 0)
-                          (set-window-buffer nil (current-buffer)))))
-
 (provide 'init-prog)
 ;;; init-prog.el ends here

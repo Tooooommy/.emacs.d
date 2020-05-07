@@ -61,6 +61,24 @@
   (set-frame-parameter nil 'fullscreen
                        (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
+;; @see https://github.com/syl20bnr/spacemacs/issues/11788
+;; @see https://github.com/syl20bnr/spacemacs/issues/11801#issuecomment-451755821
+(defun helpers/org-read-datetree-date (d)
+  (let ((dtmp (nthcdr 3 (parse-time-string d))))
+    (list (cadr dtmp) (car dtmp) (caddr dtmp))))
+
+;; refile 一个 entry 到 gtd.org 文件
+(defun helpers/org-refile-to-datetree (&optional bfn)
+  (interactive)
+  (require 'org-datetree)
+  (let* ((bfn (or bfn (find-file-noselect (expand-file-name "~/Documents/org/agenda/gtd.org"))))
+         (datetree-date (helpers/org-read-datetree-date (org-read-date t nil))))
+    (org-refile nil nil (list nil (buffer-file-name bfn) nil
+                              (with-current-buffer bfn
+                                (save-excursion
+                                  (org-datetree-find-date-create datetree-date)
+                                  (point)))))))
+
 (provide 'init-helpers)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

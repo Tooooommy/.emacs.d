@@ -2,9 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/.notes")
- (front-context-string . "** DOING\n  [2020")
- (rear-context-string . "g.el:::config]]\n")
- (position . 88))
+(("org-refile-last-stored"
+ (filename . "~/Documents/org/agenda/gtd.org")
+ (front-context-string . "**** TODO [#B] [")
+ (rear-context-string . " 2020-06-10 星期三\n")
+ (position . 958))
+("org-capture-last-stored"
+ (filename . "~/Documents/org/agenda/someday.org")
+ (front-context-string . "** TODO [#C] [20")
+ (rear-context-string . "018-05-03 Thu>\n\n")
+ (position . 243))
 )
