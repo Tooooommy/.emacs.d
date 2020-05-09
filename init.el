@@ -32,14 +32,12 @@
 (require 'init-gui)
 (require 'init-treemacs)
 (require 'init-projectile)
-
-;; prog
+(require 'init-eglot)
 (require 'init-prog)
 (require 'init-markdown)
 (require 'init-cpp)
 (require 'init-org)
 (require 'init-git)
-(require 'init-eglot)
 (require 'init-company)
 (require 'init-yasnippet)
 (require 'init-elisp)

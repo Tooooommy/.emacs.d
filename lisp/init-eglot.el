@@ -2,6 +2,9 @@
 (use-package eglot
   :ensure t
   :hook
-  ((go-mode rust-mode c-mode c++-mode) . eglot-ensure))
+  ((go-mode . eglot-ensure)
+   (rust-mode . eglot-ensure)
+   (c-mode . eglot-ensure)
+   (c++-mode . eglot-ensure)))
 
 (provide 'init-eglot)
