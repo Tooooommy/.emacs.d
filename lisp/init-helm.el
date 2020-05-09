@@ -55,7 +55,6 @@
   (use-package helm-projectile
     :ensure t
     :config
-    (helm-projectile-on)
     (setq helm-projectile-fuzzy-match t))
   )
 
