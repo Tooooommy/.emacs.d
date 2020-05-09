@@ -27,6 +27,7 @@
 
 (require 'init-builtin)
 (require 'init-evil)
+(require 'init-helm)
 (require 'init-keymap)
 (require 'init-gui)
 (require 'init-treemacs)

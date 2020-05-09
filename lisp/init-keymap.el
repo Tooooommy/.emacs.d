@@ -29,13 +29,14 @@
   
 ;; emacs key bind like
 (general-define-key [f11] 'helpers/fullscreen)
-(general-define-key "M-x" 'smex :keymaps 'override) ;; 重新绑定
+(general-define-key "M-x" 'helm-M-x :keymaps 'override) ;; 重新绑定
+(general-define-key "C-x C-f" 'helm-find-files :keymaps 'override)
 (general-define-key "M-;" 'evilnc-comment-or-uncomment-lines :wk "comment")
 (general-define-key "gd" 'xref-find-definitions :states '(normal visual motion) :keymaps 'override :wk "jump")
 (general-define-key "gb" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")
 
 ;; space leader
-(leader-key "SPC" '(smex :wk "command line"))
+(leader-key "SPC" '(helm-M-x :wk "command line"))
 (leader-key "0" '(treemacs-select-window :wk "select treemacs"))
 ;; comments
 (leader-key "c" '(:wk "comment")
@@ -46,23 +47,12 @@
   "cr" '(comment-or-uncomment-region :wk "region"))
 
 ;; buffers
-(leader-key "b" '(:wk "buffer & bookmark")
-  "bb" '(ibuffer :wk "list")
+(leader-key "b" '(:wk "buffer")
+  "bb" '(helm-mini :wk "list")
   "bn" '(evil-next-buffer :wk "next")
   "bp" '(evil-prev-buffer :wk "previous")
   "bc" '(evil-buffer-new :wk "create")
-  "bd" '(evil-delete-buffer :wk "delete")
-  "bg" '(ibuffer-jump :wk "jump")
-  "bm" '(helpers/kill-other-buffer :wk "kill other")
-
-  "bm" '(:wk "bookmark")
-  "bmb" '(list-bookmarks :wk "list")
-  "bmm" '(bookmark-set :wk "mark")
-  "bms" '(bookmark-save :wk "save")
-  "bmd" '(bookmark-delete :wk "delete")
-  "bml" '(bookmark-load :wk "load")
-  "bmj" '(bookmark-jump :wk "jump")
-  )
+  "bd" '(evil-delete-buffer :wk "delete"))
 
 ;; edit
 (leader-key "e" '(:wk "edit")
@@ -85,18 +75,17 @@
 
 ;; files
 (leader-key "f" '(:wk "file & pomidor")
-  "ff" '(ido-find-file :wk "find")
-  "fe" '(helpers/open-init-file :wk "init.el")
+  "ff" '(helm-find-files :wk "find")
+  "fr" '(helm-recentf :wk "recentf")
   "fs" '(save-buffer :wk "save")
   "ft" '(treemacs :wk "treemacs")
-  "fr" '(quickrun :wk "quickrun")
-
-  "fo" '(:wk "org")
-  "foa" '(org-agenda :wk "agenda")
-  "foc" '(org-capture :wk "capture")
-  "fow" '(org-refile :wk "refile")
-  "fog" '(helpers/org-refile-to-datetree :wk "refile to gtd")
-  "fop" '(org-pomodoro :wk "pomodoro"))
+  "fb" '(helm-filtered-bookmarks :wk "bookmarks")
+  "fp" '(helm-browse-project :wk "project")
+  "fh" '(helm-apropos :wk "help")
+  "fg" '(helm-ls-git-ls :wk "git")
+  "f." '(helm-gitignore :wk "gitignore")
+  "fw" '(helm-swoop :wk "swoop")
+  "fy" '(quickrun :wk "quickrun"))
 
 ;; help
 (leader-key "h" '(:wk "help")
@@ -104,7 +93,8 @@
   "hk" '(helpful-key :wk "key")
   "hf" '(helpful-symbol :wk "function")
   "hm" '(helpful-macro :wk "macro")
-  "hv" '(helpful-variable :wk "variable"))
+  "hv" '(helpful-variable :wk "variable")
+  "hd" '(helm-descbinds :wk "descbinds"))
 
 ;; windows
 (leader-key "w" '(:wk "window")
@@ -171,48 +161,35 @@
 
 ;; version control
 (leader-key "v" '(:wk "version control")
-
-  "vi" '(magit-init :wk "git init")
-  "va" '(magit-stage-modified :wk "git add")
-  "vy" '(magit-status-here :wk "git status")
-  "vo" '(magit-checkout :wk "git checkout")
-  "v." '(magit-gitignore-in-topdir :wk "git ignore")
+  "vv" '(:wk "operator") 
+  "vvi" '(magit-init :wk "init")
+  "vva" '(magit-stage-modified :wk "add all")
+  "vvb" '(magit-checkout :wk "checkout")
+  "vvc" '(magit-commit-create :wk "commit")
+  "vvd" '(magit-checkout-stage :wk "checkout stage")
+  "vve" '(magit-ediff :wk "ediff")
+  "vvf" '(magit-stage-file :wk "add file")
+  "vvs" '(magit-status-here :wk "status")
+  "vvo" '(magit-clone :wk "clone")
+  "vv." '(magit-gitignore-in-topdir :wk "ignore")
+  "vvv" '(magit-version :wk "version")
 
   "vb" '(:wk "git branch") ;; branch
   "vbo" '(magit-branch-checkout :wk "checkout")
   "vbc" '(magit-branch-create :wk "create")
   "vbd" '(magit-branch-delete :wk "delete")
   "vbr" '(magit-branch-rename :wk "rename")
-  "vbh" '(magit-branch :wk "help")
-
-  "vc" '(:wk "commit & reset & revert") ;; commit 
-  "vcc" '(magit-commit :wk "commit")
-  "vcn" '(magit-commit-create :wk "create")
-  "vce" '(magit-reset :wk "reset")
-  "vch" '(magit-reset-hard :wk "reset hard")
-  "vcs" '(magit-reset-soft :wk "reset soft")
-  "vcm" '(magit-reset-mixed :wk "reset mixed")
-  "vcd" '(magit-revert :wk "revert")
-  "vcr" '(magit-revert-and-commit :wk "revert commit")
-  "vco" '(magit-revert-no-commit :wk "revert no commit")
 
   "vt" '(:wk "git tag") ;; tag
   "vtc" '(magit-tag-create :wk "create")
   "vtd" '(magit-tag-delete :wk "delete")
   "vtr" '(magit-tag-release :wk "release")
   "vtp" '(magit-tag-prune :wk "push")
-  "vth" '(magit-tag :wk "help")
-
-  "vs" '(:wk "reset & stage") ;; set
-  "vsa" '(magit-stage-modified :wk "stage all")
-  "vsf" '(magit-stage-file :wk "stage file")
 
   "vm" '(:wk "merge & rebase") ;; merge
-  "vmm" '(magit-merge :wk "merge")
   "vmi" '(magit-merge-into :wk "merge into")
   "vmq" '(magit-merge-abort :wk "merge abort")
   "vmv" '(magit-merge-preview :wk "merge preview")
-  "vmr" '(magit-rebase :wk "rebase")
   "vme" '(magit-rebase-edit :wk "rebase edit")
   "vms" '(magit-rebase-skip :wk "rebase skip")
   "vma" '(magit-rebase-abort :wk "rebase abort")
@@ -220,24 +197,57 @@
   "vma" '(magit-rebase-interactive :wk "rebase interactive")
 
   "vl" '(:wk "log") ;; log
-  "vll" '(magit-log :wk "help")
   "vla" '(magit-log-all :wk "all")
   "vlh" '(magit-log-head :wk "head")
 
   "vp" '(:wk "pull & push & fetch")
-  "vpp" '(magit-pull :wk "pull")
   "vpb" '(magit-pull-branch :wk "pull branch")
   "vps" '(magit-pull-from-upstream :wk "pull upstream")
-  "vpu" '(magit-push :wk "push")
   "vpc" '(magit-push-current :wk "push current")
   "vpo" '(magit-push-other :wk "push other")
   "vpt" '(magit-push-tag :wk "push tag")
-  "vpf" '(magit-fetch :wk "fetch")
   "vpa" '(magit-fetch-all :wk "fetch all")
   "vpe" '(magit-fetch-branch :wk "fetch branch")
 
-  "vx" '(magit-clone :wk "clone")
-  "vv" '(magit-version :wk "version")
+  "vr" '(:wk "reset & revert")
+  "vrh" '(magit-reset-hard :wk "reset hard")
+  "vrs" '(magit-reset-soft :wk "reset soft")
+  "vrm" '(magit-reset-mixed :wk "reset mixed")
+  "vrc" '(magit-revert-and-commit :wk "revert commit")
+  "vrn" '(magit-revert-no-commit :wk "revert no commit")
+
+  "vh" '(:wk "helpinfo")
+  "vhb" '(magit-branch :wk "branch")
+  "vhc" '(magit-commit :wk "commit")
+  "vhr" '(magit-reset :wk "reset")
+  "vhv" '(magit-revert :wk "revert")
+  "vht" '(magit-tag :wk "tag")
+  "vhl" '(magit-log :wk "log")
+  "vhp" '(magit-pull :wk "pull")
+  "vhu" '(magit-push :wk "push")
+  "vhf" '(magit-fetch :wk "fetch")
+  "vhm" '(magit-merge :wk "merge")
+  "vhe" '(magit-rebase :wk "rebase")
+  )
+
+(leader-key "p" '(:wk "project")
+  "pp" '(helm-projectile :wk "projectile")
+  "pa" '(helm-projectile-ack :wk "ack")
+  "pg" '(helm-projectile-grep :wk "grep")
+  "pr" '(helm-projectile-recentf :wk "recentf")
+  "ps" '(helm-projectile-switch-project :wk "switch")
+  "pr" '(helm-projectile-rg :wk "rg")
+  "pf" '(helm-projectile-find-file :wk "file")
+  "pd" '(helm-projectile-find-dir :wk "dir")
+  )
+
+(leader-key "o" '(:wk "org")
+  "ow" '(org-refile :wk "refile")
+  "og" '(helpers/org-refile-to-datetree :wk "refile to gtd")
+  "oa" '(helm-org-agenda-files-headings :wk "agenda")
+  "oc" '(helm-org-capture-templates :wk "capture")
+  "oh" '(helm-org-in-buffer-headings :wk "headings")
+  "op" '(org-pomodoro :wk "pomodoro")
   )
 
 (provide 'init-keymap)
