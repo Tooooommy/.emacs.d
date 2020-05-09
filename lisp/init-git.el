@@ -1,8 +1,3 @@
-
-Cc: tooooommy <tommy_mgt@163.com>
-Cc: tooooommy <tommy_mgt@163.com>
-Cc: tooooommy <tommy_mgt@163.com>
-
 ;; @see https://github.com/magit/magit
 (use-package magit
   :ensure t

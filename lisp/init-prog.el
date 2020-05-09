@@ -54,8 +54,6 @@
   :mode ("Dockerfile\\'" . dockerfile-mode)
   :config (setq dockerfile-mode-command "docker"))
 
-
-
 ;; @see https://github.com/syohex/emacs-quickrun
 (use-package quickrun
   :ensure t)
