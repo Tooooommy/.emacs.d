@@ -42,11 +42,6 @@
     :ensure t
     :config (add-to-list 'company-backends 'company-restclient)))
 
-;; elnode
-;; @see https://github.com/nicferrier/elnode
-(use-package elnode
-  :ensure t)
-
 ;; editconfig
 (use-package editorconfig
   :defer 0.3
