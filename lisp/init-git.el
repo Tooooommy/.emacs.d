@@ -9,28 +9,23 @@
    ("C-x M-g" . magit-dispatch)
    ("C-c M-g" . magit-file-popup))
   :config
-  ()
-
-  ;; @see https://github.com/emacs-evil/evil-magit
-  (use-package evil-magit
-    :ensure t )
 
   ;; @see https://github.com/magit/forge
   (use-package forge
-    :ensure t
-    :demand)
-  )
+    :ensure t))
 
 ;; @see https://github.com/dgutov/diff-hl
 (use-package diff-hl
   :ensure t
-  :hook (after-init . global-diff-hl-mode)
+  :defer t
+  :init
+  (global-diff-hl-mode 1)
+  (diff-hl-dir-mode 1)
   :config
-  (diff-hl-dir-mode)
   (advice-add 'svn-status-update-modeline :after #'diff-hl-update)
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  )
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+(setq auto-revert-check-vc-info t)
 
 (provide 'init-git)
 
