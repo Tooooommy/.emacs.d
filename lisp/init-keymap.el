@@ -82,6 +82,8 @@
   "fb" '(helm-filtered-bookmarks :wk "bookmarks")
   "fp" '(helm-browse-project :wk "project")
   "fh" '(helm-apropos :wk "help")
+  "fm" '(helm-imenu-anywhere :wk "helm imenu")
+  "fi" '(imenu-list-<= :wk "imenu list")
   "fg" '(helm-ls-git-ls :wk "git")
   "f." '(helm-gitignore :wk "gitignore")
   "fw" '(helm-swoop :wk "swoop")

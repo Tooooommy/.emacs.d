@@ -130,17 +130,11 @@
 ;; @see https://github.com/nonsequitur/smex/
 (use-package smex
   :ensure t
-  :hook (after-init . smex-initialize)
-  :bind
-  (("M-x" . smex)
-   ("M-X" . smex-major-mode-commands)
-   ("C-c C-c M-x" . execute-extended-command)))
+  :hook (after-init . smex-initialize))
 
-;; rg search
 ;; @see https://github.com/dajva/rg.el
 (use-package rg
   :ensure t)
-;; :config (rg-enable-default-bindings))
 
 ;; undo-tree 
 ;; @see http://www.dr-qubit.org/git/undo-tree.git
@@ -158,32 +152,15 @@
         kept-old-versions 2
         version-control t))
 
-;; @see https://github.com/nonsequitur/smex/
-(use-package smex
-  :ensure t
-  :init (smex-initialize)
-  :bind
-  (("M-x" . smex)
-   ("M-X" . smex-major-mode-commands)))
-
 ;; @see https://github.com/Wilfred/helpful
 (use-package helpful
   :ensure t
-  :bind (([remap describe-variable] . helpful-variable)
-         ([remap describe-function] . helpful-callable)
-         ([remap describe-key] . helpful-key)
-         :map emacs-lisp-mode-map
-         ("C-c C-d" . helpers/helpful-at-point-dwim))
-
   :init
   (setq helpful-max-buffers 10))
 
 ;; @see https://github.com/bmag/imenu-list
 (use-package imenu-list
-  :ensure t
-  :bind
-  (:map prog-mode-map
-   ("C-'" . imenu-list-smart-toggle)))
+  :ensure t)
 
 ;; @see https://github.com/meqif/flymake-diagnostic-at-point
 (use-package flymake-diagnostic-at-point
