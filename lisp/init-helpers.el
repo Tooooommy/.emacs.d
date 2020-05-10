@@ -79,6 +79,7 @@
                                   (org-datetree-find-date-create datetree-date)
                                   (point)))))))
 
+
 (provide 'init-helpers)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
