@@ -9,6 +9,7 @@
    ("C-x M-g" . magit-dispatch)
    ("C-c M-g" . magit-file-popup))
   :config
+  ()
 
   ;; @see https://github.com/emacs-evil/evil-magit
   (use-package evil-magit
