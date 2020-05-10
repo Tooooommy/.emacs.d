@@ -82,11 +82,18 @@
   "fb" '(helm-filtered-bookmarks :wk "bookmarks")
   "fp" '(helm-browse-project :wk "project")
   "fh" '(helm-apropos :wk "help")
-  "fm" '(helm-imenu-anywhere :wk "helm imenu")
-  "fi" '(imenu-list-<= :wk "imenu list")
+  "fm" '(helm-mt :wk "multi term")
+  "fw" '(helm-swoop :wk "swoop")
+
+  ;; imenu
+  "fa" '(helm-imenu-anywhere :wk "helm imenu")
+  "fi" '(imenu-list-smart-toggle :wk "imenu list")
+
+  ;; git
   "fg" '(helm-ls-git-ls :wk "git")
   "f." '(helm-gitignore :wk "gitignore")
-  "fw" '(helm-swoop :wk "swoop")
+
+  ;; help
   "fy" '(quickrun :wk "quickrun"))
 
 ;; help

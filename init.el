@@ -31,6 +31,8 @@
 (require 'init-keymap)
 (require 'init-git)
 (require 'init-gui)
+(require 'init-docker)
+(require 'init-mt)
 (require 'init-treemacs)
 (require 'init-projectile)
 (require 'init-eglot)
