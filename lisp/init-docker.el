@@ -4,7 +4,11 @@
 
 ;; @see https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :mode ("Dockerfile\\'" . dockerfile-mode)
+  :config (setq dockerfile-mode-command "docker"))
+
+
 
 (provide 'init-docker)
 ;;; init-docker.el

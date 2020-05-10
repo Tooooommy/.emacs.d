@@ -1,22 +1,12 @@
-;; sql
-(use-package sql-indent
-  :after (:any sql sql-interactive-mode)
-  :delight sql-mode "Σ ")
-
-;; lua
-(use-package lua-mode
-  :delight "Λ "
-  :mode "\\.lua\\'"
-  :interpreter ("lua" . lua-mode))
-
 ;; yaml
 (use-package yaml-mode
-  :delight "ψ "
+  :delight "Y "
   :mode "\\.yml\\'"
   :interpreter ("yml" . yml-mode))
 
 ;; xml
 (use-package xml-mode
+  :delight "X "
   :ensure nil
   :mode ("\\.wsdl\\'" "\\.xsd\\'"))
 
@@ -30,7 +20,14 @@
     (when (eq major-mode 'json-mode)
       (json-pretty-print-buffer))))
 
-;; restclient
+;; toml
+(use-package toml-mode
+  :delight "T "
+  :ensure t
+  :mode
+  (("\\.conf\\'" . conf-toml-mode)
+   ("\\.toml\\'" . toml-mode)))
+
 ;; @see https://github.com/pashky/restclient.el
 (use-package restclient
   :ensure t
@@ -46,13 +43,6 @@
 (use-package editorconfig
   :defer 0.3
   :config (editorconfig-mode 1))
-
-;; dockerfile
-;; @see https://github.com/spotify/dockerfile-mode
-(use-package dockerfile-mode
-  :ensure t
-  :mode ("Dockerfile\\'" . dockerfile-mode)
-  :config (setq dockerfile-mode-command "docker"))
 
 ;; @see https://github.com/syohex/emacs-quickrun
 (use-package quickrun
