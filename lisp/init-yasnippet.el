@@ -10,5 +10,4 @@
   (use-package yasnippet-snippets :ensure t))
 
 (provide 'init-yasnippet)
-
 ;;; init-yasnippet.el ends here
