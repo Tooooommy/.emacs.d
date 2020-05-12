@@ -47,7 +47,6 @@
   (unless buf (setq buf (current-buffer)))
   (dolist (buffer (delq buf (buffer-list))) (kill-buffer buffer)))
 
-
 ;; help
 (defun helpers/helpful-at-point-dwim ()
   (interactive)

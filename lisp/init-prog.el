@@ -39,11 +39,6 @@
     :ensure t
     :config (add-to-list 'company-backends 'company-restclient)))
 
-;; editconfig
-(use-package editorconfig
-  :defer 0.3
-  :config (editorconfig-mode 1))
-
 ;; @see https://github.com/syohex/emacs-quickrun
 (use-package quickrun
   :ensure t)
@@ -51,16 +46,9 @@
 ;; @see https://github.com/jacktasia/dumb-jump
 (use-package dumb-jump
   :ensure t
-  :after evil
   :hook (after-init . dumb-jump-mode)
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g b" . dumb-jump-back)
-         ("M-g i" . dumb-jump-go-prompt)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (setq dumb-jump-prefer-searcher 'rg
-                dumb-jump-selector 'rg))
+  :config
+  (setq dumb-jump-selector 'helm))
 
 ;; @see https://github.com/technomancy/better-defaults
 (use-package better-defaults
@@ -90,7 +78,6 @@
         nlinum-relative-redisplay-delay 0
         nlinum-relative-current-symbol "->"))
 
-;; @see https://github.com/emacsmirror/rainbow-mode
 ;; @see https://github.com/Fanael/rainbow-delimiters
 (use-package rainbow-delimiters
   :ensure t
@@ -121,10 +108,6 @@
 (use-package smex
   :ensure t
   :hook (after-init . smex-initialize))
-
-;; @see https://github.com/dajva/rg.el
-(use-package rg
-  :ensure t)
 
 ;; undo-tree 
 ;; @see http://www.dr-qubit.org/git/undo-tree.git

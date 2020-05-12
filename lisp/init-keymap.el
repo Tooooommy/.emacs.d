@@ -47,12 +47,18 @@
   "cr" '(comment-or-uncomment-region :wk "region"))
 
 ;; buffers
-(leader-key "b" '(:wk "buffer")
-  "bb" '(helm-mini :wk "list")
-  "bn" '(evil-next-buffer :wk "next")
-  "bp" '(evil-prev-buffer :wk "previous")
-  "bc" '(evil-buffer-new :wk "create")
-  "bd" '(evil-delete-buffer :wk "delete"))
+(leader-key "b" '(:wk "buffer & bookmarks")
+  "bb" '(helm-mini :wk "buffers")
+  "bn" '(evil-next-buffer :wk "next buffer")
+  "bp" '(evil-prev-buffer :wk "prev buffer")
+  "bc" '(evil-buffer-new :wk "new buffer")
+  "bd" '(evil-delete-buffer :wk "del buffer")
+  "bm" '(helm-bookmarks :wk "bookmarks")
+  "br" '(helm-bookmark-rename :wk "rename bookmark")
+  "bs" '(bookmark-set :wk "set bookmark")
+  "bk" '(bookmark-delete :wk "delete bookmark")
+  "bf" '(helm-filtered-bookmarks :wk "filter bookmarks")
+  )
 
 ;; edit
 (leader-key "e" '(:wk "edit")
@@ -69,21 +75,24 @@
   "ef" '(evil-mc-skip-and-goto-next-match :wk "mc next match")
   "e0" '(evil-mc-make-and-goto-first-cursor :wk "mc first cursor")
   "e$" '(evil-mc-make-and-goto-last-cursor :wk "mc last cursor")
+
   "eh" '(evil-mc-make-cursor-here :wk "mc here")
   "ep" '(evil-mc-pause-cursors :wk "mc pause cursor")
   "er" '(evil-mc-resume-cursors :wk "mc resume cursor"))
 
 ;; files
-(leader-key "f" '(:wk "file & pomidor")
+(leader-key "f" '(:wk "file & helm")
   "ff" '(helm-find-files :wk "find")
   "fr" '(helm-recentf :wk "recentf")
   "fs" '(save-buffer :wk "save")
   "ft" '(treemacs :wk "treemacs")
-  "fb" '(helm-filtered-bookmarks :wk "bookmarks")
-  "fp" '(helm-browse-project :wk "project")
-  "fh" '(helm-apropos :wk "help")
-  "fm" '(helm-mt :wk "multi term")
   "fw" '(helm-swoop :wk "swoop")
+  "fm" '(helm-mt :wk "multi term")
+
+  ;; fold
+  "fo" '(hs-toggle-hiding :wk "fold")
+  "f+" '(hs-show-all :wk "show all")
+  "f-" '(hs-hide-all :wk "hide all")
 
   ;; imenu
   "fa" '(helm-imenu-anywhere :wk "helm imenu")
@@ -103,7 +112,9 @@
   "hf" '(helpful-symbol :wk "function")
   "hm" '(helpful-macro :wk "macro")
   "hv" '(helpful-variable :wk "variable")
-  "hd" '(helm-descbinds :wk "descbinds"))
+  "hd" '(helm-descbinds :wk "descbinds")
+  "ha" '(helm-apropos :wk "apropos")
+  )
 
 ;; windows
 (leader-key "w" '(:wk "window")

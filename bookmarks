@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
+(("ma"
+ (filename . "~/.my-emacs.d/lisp/init-keymap.el")
+ (front-context-string . "\n;; edit\n(leader")
+ (rear-context-string . "bookmarks\")\n  )\n")
+ (position . 2474))
+("org-refile-last-stored"
  (filename . "~/Documents/org/agenda/gtd.org")
  (front-context-string . "**** TODO [#B] [")
  (rear-context-string . " 2020-06-10 星期三\n")
