@@ -35,6 +35,18 @@
         company-dabbrev-downcase nil)
 
 
+  (defun company-yasnippet/disable-after-dot (fun command &optional arg &rest _ignore)
+    (if (eq command 'prefix)
+        (let ((prefix (funcall fun 'prefix)))
+          (when (and prefix (not
+                             (eq
+                              (char-before (- (point) (length prefix)))
+                              ?.)))
+            prefix))
+      (funcall fun command arg)))
+
+  (advice-add #'company-yasnippet :around #'company-yasnippet/disable-after-dot)
+
   ;; @see https://github.com/raxod502/prescient.el
   (use-package company-prescient
     :ensure t

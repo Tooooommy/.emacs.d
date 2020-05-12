@@ -133,6 +133,13 @@
   "wf" '(helpers/fullscreen :wk "fullscreen") ;;; 满屏
   "ww" '(treemacs-select-window :wk "treemacs"))
 
+;; dumb
+(leader-key "g" '("dumb jump")
+  "gd" '(dumb-jump-go :wk "go")
+  "go" '(dumb-jump-back :wk "back")
+  "gw" '(dumb-jump-go-other-window :wk "go other window")
+  "gc" '(dumb-jump-go-current-window :wk "go current window"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; language
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
