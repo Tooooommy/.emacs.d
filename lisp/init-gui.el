@@ -2,7 +2,7 @@
 ;; 主题颜色
 (use-package doom-themes
   :ensure t
-  :init (load-theme 'doom-one t)
+  :init (load-theme 'doom-gruvbox t)
   :config
   (setq  
    doom-themes-enable-bold t
@@ -15,7 +15,6 @@
   (doom-themes-org-config))
 
 ;; @see https://github.com/seagle0128/doom-modeline
-;; 状态条
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
