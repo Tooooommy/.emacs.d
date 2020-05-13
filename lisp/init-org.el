@@ -121,17 +121,6 @@
     :config
     (setq org-download-image-dir "~/Documents/org/images/"))
 
-  ;; @see https://github.com/alphapapa/org-ql
-  (use-package org-ql
-    :ensure t
-    :defer t)
-
-  ;; @see https://github.com/Kungsgeten/org-brain
-  (use-package org-brain
-    :ensure t
-    :init
-    (setq org-brain-path "~/Documents/org/brain/"))
-
   ;; Rich text clipboard
   ;; @see https://github.com/unhammer/org-rich-yank
   (use-package org-rich-yank
