@@ -48,10 +48,10 @@
       frame-resize-pixelwise t)
 
 ;; 显示窗口
-;; (setq window-divider-default-places t
-;;       window-divider-default-bottom-width 1
-;;       window-divider-default-right-width 1)
-;; (add-hook 'window-setup-hook #'window-divider-mode)
+(setq window-divider-default-places t
+      window-divider-default-bottom-width 1
+      window-divider-default-right-width 1)
+(add-hook 'window-setup-hook #'window-divider-mode)
 
 ;; 删除某些buffer
 (defvar *protected-buffers* '("*scratch*" "*Messages*")
@@ -65,6 +65,9 @@
 
 (add-hook 'after-init-hook #'my/protected-buffers)
 
+;; vc 
+;;(setq auto-revert-check-vc-info t)
+(setq auto-revert-mode 1)
 
 ;; ido
 (use-package ido
