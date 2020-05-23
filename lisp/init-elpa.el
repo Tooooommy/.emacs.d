@@ -17,17 +17,23 @@
 ;; (use-package gnu-elpa-keyring-update :ensure t)
 
 ;; @see https://github.com/jwiegley/emacs-async
-(use-package async :ensure t)
+(use-package async
+  :ensure t)
 
 ;; @see https://github.com/auto-complete/popup-el
-(use-package popup :ensure t)
+(use-package popup
+  :ensure t)
 
 ;; @see https://github.com/domtronn/all-the-icons.el
-(use-package all-the-icons :ensure t)
+(use-package all-the-icons
+  :ensure t
+  :defer t
+  )
 
 ;; Environment
 (use-package exec-path-from-shell
   :ensure t
+  :defer t
   :init
   (setq exec-path-from-shell-check-startup-files nil
         exec-path-from-shell-variables '("PATH" "MANPATH")
@@ -37,6 +43,7 @@
 ;; @see https://github.com/rranelli/auto-package-update.el
 (use-package auto-package-update
   :ensure t
+  :defer t
   :init
   (setq auto-package-update-delete-old-versions t
         auto-package-update-hide-results t)

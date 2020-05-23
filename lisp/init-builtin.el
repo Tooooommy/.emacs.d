@@ -5,6 +5,11 @@
           (or user-login-name "")	
           " - Emacs love you!\n\n"))
 
+;; Suppress GUI features
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
 (setq-default initial-scratch-message (scratch-buffer-message))
 (setq initial-major-mode 'fundamental-mode)
 
@@ -13,11 +18,12 @@
 (display-time-mode 1)                             ; 在modeline 加上时间
 (fset 'yes-or-no-p 'y-or-n-p)                     ; 改变询问字符
 
-;; Suppress GUI features
-(setq use-file-dialog nil)
-(setq use-dialog-box nil)
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message t)
+;; @see https://github.com/technomancy/better-defaults
+;; 默认设置
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
 
 ;; 系统编码
 (when (fboundp 'set-charset-priority)
@@ -35,17 +41,17 @@
 (modify-coding-system-alist 'process "*" 'utf-8)
 
 ;; 字体设置
-;; (set-face-attribute 'default  nil :font "Source Code Pro Medium")
+(set-face-attribute 'default  nil :font "Source Code Pro Medium 12")
 ;; (set-fontset-font t 'latin "Noto Sans")
-(set-frame-font "Source Code Pro 12")
+;; (set-frame-font "Source Code Pro 12")
 
 ;; 编辑器标题
 (setq frame-title-format '("Tooooommy Emacs - %b")
       icon-title-format frame-title-format)
 
 ;; 初始化调整窗口
-(setq frame-inhibit-implied-resize t
-      frame-resize-pixelwise t)
+;; (setq frame-inhibit-implied-resize t
+;;       frame-resize-pixelwise t)
 
 ;; 显示窗口
 (setq window-divider-default-places t
@@ -68,44 +74,38 @@
 ;; vc 
 (auto-revert-mode 1)
 
-;; ido
-(use-package ido
-  :ensure nil
-  :init (ido-mode 1))
-
-;; ibuffer
-(use-package ibuffer
-  :ensure nil)
+;; tab
+(setq-default indent-tabs-mode nil)
 
 ;; winner
 (use-package winner
   :ensure nil
+  :defer t
   :hook (after-init . winner-mode))
 
 ;; ediff
 (use-package ediff
   :ensure nil
+  :defer t
   :hook (ediff-quit . winner-undo))
-
-;; saveplace
-(use-package save-place
-  :ensure nil
-  :hook (after-init . save-place-mode))
 
 ;; hl-line // 高亮当前行
 (use-package hl-line
   :ensure nil
+  :defer t
   :hook(after-init . global-hl-line-mode))
 
 ;; so-long
 (when (not (version< emacs-version "27"))
   (use-package so-long
     :ensure nil
+    :defer t
     :hook (after-init .global-so-long-mode)))
 
 ;; eldoc
 (use-package eldoc
   :ensure nil
+  :defer t
   :diminish)
 
 ;; subword
@@ -113,22 +113,12 @@
 ;;   :ensure nil
 ;;   :hook (after-init . global-subword-mode))
 
-;; paren
-;; (use-package paren
-;;   :ensure nil
-;;   :hook (after-init . show-paren-mode)
-;;   :config
-;;   (setq show-paren-when-point-inside-paren t
-;;         show-paren-when-point-in-periphery t))
-
-;; autorevert
-;; (use-package autorevert
-;;   :ensure nil
-;;   :hook (after-init . global-auto-revert-mode))
-
 ;; windmove
 (use-package windmove
-  :ensure nil)
+  :ensure nil
+  :defer t)
+
+
 
 (provide 'init-builtin)
 ;;; init-builtin.el nends here

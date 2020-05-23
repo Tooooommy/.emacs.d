@@ -1,6 +1,7 @@
 ;; @see https://github.com/emacs-evil/evil
 (use-package evil
   :ensure t 
+  :defer 3
   :init (setq evil-want-keybinding nil
               evil-ex-substitute-global t
               evil-escape-mode 1)
@@ -31,6 +32,7 @@
   ;; @see https://github.com/emacs-evil/evil-surround
   (use-package evil-surround
     :ensure t
+    :defer 3
     :config
     (global-evil-surround-mode 1)
     (add-hook 'emacs-lisp-mode-hook (lambda ()
@@ -38,11 +40,14 @@
 
   ;; @see https://github.com/redguardtoo/evil-nerd-commenter
   (use-package evil-nerd-commenter
-    :ensure t)
+    :ensure t
+    :defer 3
+    )
 
   ;; @see https://github.com/syl20bnr/evil-escape
   (use-package evil-escape
     :ensure t 
+    :defer 3
     :diminish
     :demand t
     :init(evil-escape-mode 1)
@@ -54,6 +59,7 @@
   ;; @see https://github.com/gabesoft/evil-mc
   (use-package evil-mc
     :ensure t
+    :defer 3
     :after evil
     :init (global-evil-mc-mode 1)
     :config

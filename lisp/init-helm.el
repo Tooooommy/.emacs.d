@@ -1,7 +1,7 @@
 ;; @see https://github.com/emacs-helm/helm
 (use-package helm
   :ensure t
-  :defer 1
+  :defer 3
   :hook (after-init . helm-mode)
   :config
   ;; config 
@@ -21,6 +21,7 @@
   ;; @see https://github.com/emacsorphanage/helm-swoop
   (use-package helm-swoop
     :ensure t
+    :defer 3
     :config
     (setq helm-multi-swoop-edit-save t
           helm-swoop-split-with-multiple-windows nil
@@ -32,24 +33,32 @@
   
   ;; @see https://github.com/emacs-helm/helm-ls-git
   (use-package helm-ls-git
-    :ensure t)
+    :ensure t
+    :defer 3
+    )
 
   ;; @see https://github.com/jupl/helm-gitignore
   (use-package helm-gitignore
-    :ensure t)
+    :ensure t
+    :defer 3
+    )
 
   ;; @see https://github.com/emacs-helm/helm-descbinds
   (use-package helm-descbinds
     :ensure t
+    :defer 3
     :hook (helm-mode . helm-descbinds-mode))
 
   ;; @see https://github.com/emacs-helm/helm-org
   (use-package helm-org
-    :ensure t)
+    :ensure t
+    :defer 3
+    )
 
   ;; @see https://github.com/bbatsov/helm-projectile
   (use-package helm-projectile
     :ensure t
+    :defer 3
     :config
     (setq helm-projectile-fuzzy-match t))
   )

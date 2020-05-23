@@ -2,6 +2,7 @@
 ;; @from centuar-emacs
 (use-package markdown-mode
   :ensure t
+  :defer 3
   :hook ((markdown-mode . flyspell-mode)
          (markdown-mode . auto-fill-mode)
          (markdown-mode . flycheck-enable-markdownlint))
@@ -16,6 +17,8 @@
   ;; @see https://github.com/ardumont/markdown-toc
   (use-package markdown-toc
     :ensure t
+    :defer 3
+    :after markdown-mode
     :bind (:map markdown-mode-command-map
            ("r" . markdown-toc-generate-or-refresh-toc))))
 

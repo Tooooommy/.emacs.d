@@ -1,6 +1,7 @@
 ;; @see https://orgmode.org
 (use-package org
   :ensure t
+  :defer 3
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c b" . org-switchb)
@@ -42,7 +43,8 @@
   ;; @see https://github.com/marcinkoziej/org-pomodoro
   (use-package org-pomodoro
     :ensure t
-    :defer 3)
+    :defer 3
+    )
 
   ;; Babel
   (setq org-confirm-babel-evaluate nil
@@ -65,7 +67,7 @@
 
   ;; (use-package evil-org
   ;;   :ensure t
-  ;;   :defer t
+  ;;   :defer 3
   ;;   :after org evil
   ;;   :config
   ;;   (add-hook 'org-mode-hook 'evil-org-mode)
@@ -78,7 +80,7 @@
   ;; @see https://github.com/louietan/anki-editor
   (use-package anki-editor
     :ensure t
-    :defer t
+    :defer 3
     :hook (org-mode . anki-editor-mode)
     :custom
     (anki-editor-create-decks t))
@@ -86,11 +88,13 @@
   ;; @see https://github.com/kaushalmodi/ox-hugo
   (use-package ox-hugo
     :ensure t
+    :defer 3
     :after ox)
 
   ;; @see https://github.com/abo-abo/org-download
   (use-package org-download
     :ensure t
+    :defer 3    
     :config
     (setq org-download-image-dir "~/Documents/org/images/"))
 
@@ -98,6 +102,7 @@
   ;; @see https://github.com/unhammer/org-rich-yank
   (use-package org-rich-yank
     :ensure t
+    :defer 3
     :bind (:map org-mode-map
            ("C-M-y" . org-rich-yank)))
 
@@ -105,6 +110,7 @@
   ;; @see https://github.com/snosov1/toc-org
   (use-package toc-org
     :ensure t
+    :defer 3
     :hook (org-mode . toc-org-mode)))
 
 (provide 'init-org)

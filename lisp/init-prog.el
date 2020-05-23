@@ -1,17 +1,19 @@
 ;; yaml
 (use-package yaml-mode
+  :defer 3
   :delight "Y "
-  :mode "\\.yml\\'"
+  :mode ("\\.yml\\'" "\\.ymal\\'")
   :interpreter ("yml" . yml-mode))
 
 ;; xml
 (use-package xml-mode
+  :defer 3
   :delight "X "
-  :ensure nil
   :mode ("\\.wsdl\\'" "\\.xsd\\'"))
 
 ;; json
 (use-package json-mode
+  :defer 3
   :delight "J "
   :mode "\\.json\\'"
   :hook (before-save . my/json-mode-before-save-hook)
@@ -22,40 +24,40 @@
 
 ;; toml
 (use-package toml-mode
+  :defer 3
   :delight "T "
-  :ensure t
   :mode
   (("\\.conf\\'" . conf-toml-mode)
    ("\\.toml\\'" . toml-mode)))
 
 ;; @see https://github.com/pashky/restclient.el
 (use-package restclient
+  :defer 3
   :ensure t
   :mode ("//.http//'" . restclient-mode)
   :config
   ;; @see https://github.com/iquiw/company-restclient
   (use-package company-restclient
-    :ensure t
+    :defer 3
     :ensure t
     :config (add-to-list 'company-backends 'company-restclient)))
 
 ;; @see https://github.com/syohex/emacs-quickrun
 (use-package quickrun
+  :defer 3
   :ensure t)
 
 ;; @see https://github.com/jacktasia/dumb-jump
 (use-package dumb-jump
+  :defer 3
   :ensure t
   :hook (after-init . dumb-jump-mode)
   :config
   (setq dumb-jump-selector 'helm))
 
-;; @see https://github.com/technomancy/better-defaults
-(use-package better-defaults
-  :ensure t)
-
 ;; @see https://github.com/Fuco1/smartparens
 (use-package smartparens
+  :defer 3
   :ensure t
   :init (smartparens-global-mode t)
   :config 
@@ -69,6 +71,7 @@
 
 ;; @see https://github.com/xcodebuild/nlinum-relative
 (use-package nlinum-relative
+  :defer 3
   :ensure t
   :hook
   ((prog-mode . nlinum-relative-mode)
@@ -80,11 +83,13 @@
 
 ;; @see https://github.com/Fanael/rainbow-delimiters
 (use-package rainbow-delimiters
+  :defer 3
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; @see https://github.com/bbatsov/super-save
 (use-package super-save
+  :defer 3
   :ensure t
   :hook (prog-mode . super-save-mode)
   :config 
@@ -94,6 +99,7 @@
 
 ;; @see https://github.com/malabarba/aggressive-indent-mode
 (use-package aggressive-indent
+  :defer 3
   :ensure t 
   :hook (after-init . global-aggressive-indent-mode)
   :config
@@ -103,9 +109,9 @@
          (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
                              (thing-at-point 'line))))))
 
-;; smex M-x
 ;; @see https://github.com/nonsequitur/smex/
 (use-package smex
+  :defer 3
   :ensure t
   :hook (after-init . smex-initialize))
 
@@ -113,6 +119,7 @@
 ;; @see http://www.dr-qubit.org/git/undo-tree.git
 ;; @see https://github.com/emacsmirror/undo-tree
 (use-package undo-tree
+  :defer 3
   :load-path "~/.emacs.d/github/undo-tree-20170706.246"
   :diminish
   :config
@@ -127,6 +134,7 @@
 
 ;; @see https://github.com/Wilfred/helpful
 (use-package helpful
+  :defer 3
   :ensure t
   :init
   (setq helpful-max-buffers 10))

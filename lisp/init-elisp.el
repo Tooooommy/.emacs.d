@@ -1,5 +1,6 @@
 ;; use elisp-mode
 (use-package elisp-mode
+  :defer 3
   :ensure nil
   :mode ("//.el//'" "//.emacs//'")
   :defines (flycheck-disabled-checkers calculate-lisp-indent-last-sexp)

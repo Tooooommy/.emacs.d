@@ -1,6 +1,7 @@
 ;; @see https://github.com/emacs-lsp/lsp-mode
 (use-package lsp-mode
   :ensure t
+  :defer 3
   :defines (lsp-clients-python-library-directories lsp-rust-rls-server-command)
   :commands (lsp-enable-which-key-integration lsp-format-buffer lsp-organize-imports)
   :diminish
@@ -43,6 +44,7 @@
 
   (use-package lsp-ui
     :ensure t
+    :defer 3
     :custom-face
     (lsp-ui-sideline-code-action ((t (:inherit warning))))
     :hook (lsp-mode . lsp-ui-mode)
@@ -81,6 +83,7 @@
   ;; Microsoft python-language-server support
   (use-package lsp-python-ms
     :ensure t
+    :defer 3
     :hook (python-mode . (lambda () (require 'lsp-python-ms)))
     :init
     (when (executable-find "python3")
@@ -90,6 +93,7 @@
   
   (use-package ccls
     :ensure t
+    :defer 3
     :defines projectile-project-root-files-top-down-recurring
     :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda () (require 'ccls)))
     :config
@@ -101,6 +105,7 @@
   ;; @see https://github.com/emacs-lsp/helm-lsp/
   (use-package helm-lsp
     :ensure t
+    :defer 3
     :after helm
     :bind
     (:map lsp-mode-map
@@ -109,6 +114,7 @@
   ;; @see https://github.com/emacs-lsp/lsp-treemacs
   (use-package lsp-treemacs
     :ensure t
+    :defer 3
     :after treemacs
     :init (lsp-treemacs-sync-mode 1))
   )

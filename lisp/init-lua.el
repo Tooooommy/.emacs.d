@@ -1,5 +1,6 @@
 ;; lua
 (use-package lua-mode
+  :defer 3
   :delight "Λ "
   :mode "\\.lua\\'"
   :interpreter ("lua" . lua-mode)
@@ -7,6 +8,7 @@
   ;; @seee https://github.com/ptrv/company-lua
   (use-package company-lua
     :ensure t
+    :defer 3
     :config
     (defun my-lua-mode-company-init ()
       (setq-local company-backends '((company-lua

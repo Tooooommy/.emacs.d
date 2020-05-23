@@ -1,17 +1,19 @@
 ;; @see https://github.com/magit/magit
 (use-package magit
   :ensure t
+  :defer 3
   :mode (("\\COMMIT_EDITMSG" . text-mode)
          ("\\MERGE_MSG" . text-mode))
   :config
   ;; @see https://github.com/magit/forge
   (use-package forge
-    :ensure t))
+    :ensure t
+    :defer 3))
 
 ;; @see https://github.com/dgutov/diff-hl
 (use-package diff-hl
   :ensure t
-  :defer t
+  :defer 3
   :init
   (global-diff-hl-mode 1)
   (diff-hl-dir-mode 1)

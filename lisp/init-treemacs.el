@@ -1,7 +1,7 @@
 ;; @see https://github.com/Alexander-Miller/treemacs
 (use-package treemacs
   :ensure t
-  :defer t
+  :defer 3
   :commands (treemacs-follow-mode
              treemacs-filewatch-mode
              treemacs-fringe-indicator-mode
@@ -25,14 +25,17 @@
 
   (use-package treemacs-projectile
     :ensure t
+    :defer 3
     :after treemacs projectile)
 
   (use-package treemacs-icons-dired
     :ensure t
+    :defer 3
     :after treemacs dired
     :hook (after-init . treemacs-icons-dired-mode))
 
   (use-package treemacs-magit
+    :defer 3
     :after magit
     :commands treemacs-magit--schedule-update
     :hook ((magit-post-commit
@@ -43,6 +46,7 @@
 
   (use-package treemacs-evil
     :ensure t
+    :defer 3
     :after evil)
   )
 

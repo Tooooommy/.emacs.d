@@ -1,6 +1,7 @@
 ;; @see https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
+  :defer 3
   :diminish
   :bind (:map projectile-mode-map
          ("s-t" . projectile-find-file)

@@ -1,6 +1,7 @@
 ;; @see https://github.com/flycheck/flycheck
 (use-package flycheck
   :ensure t
+  :defer 3
   :commands flycheck-redefine-standard-error-levels
   :hook (after-init . global-flycheck-mode)
   :init (setq flycheck-global-modes
@@ -22,6 +23,7 @@
   ;; @see https://github.com/flycheck/flycheck-pos-tip
   (use-package flycheck-pos-tip
     :ensure t
+    :defer 3
     :defines flycheck-pos-tip-timeout
     :hook (global-flycheck-mode . flycheck-pos-tip-mode)
     :config (setq flycheck-pos-tip-timeout 30))
