@@ -1,8 +1,8 @@
 ;; @see https://github.com/rust-lang/rust-mode
 (use-package rust-mode
   :ensure t
-  :init (setq rust-format-on-save t)
   :hook (rust-mode . (lambda () (setq indent-tabs-mode nil)))
+  :init (setq rust-format-on-save t)
   :config 
 
   ;; @see https://github.com/kwrooijen/cargo.el
@@ -13,15 +13,10 @@
     :config (setq compilation-filter-hook 
                   (append compilation-filter-hook '(cargo-process--add-errno-buttons))))
 
-  ;; ;; @see https://github.com/flycheck/flycheck-rust
-  ;; (use-package flycheck-rust
-  ;;   :ensure t
-  ;;   :hook (flycheck-mode . flycheck-rust-setup))
-
-  ;; @see https://github.com/jxs/flymake-rust
-  (use-package flymake-rust
+  ;; @see https://github.com/flycheck/flycheck-rust
+  (use-package flycheck-rust
     :ensure t
-    :hook (rust-mode . flymake-rust-load))
+    :hook (flycheck-mode . flycheck-rust-setup))
   )
 
 (provide 'init-rust)

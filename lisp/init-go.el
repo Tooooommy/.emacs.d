@@ -65,14 +65,14 @@
   (add-hook 'before-save-hook #'gofmt-before-save)
 
   ;; @see https://github.com/syohex/emacs-go-eldoc
-  (use-package go-eldoc
-    :ensure t
-    :hook (go-mode . go-eldoc-setup)
-    :config
-    (set-face-attribute 'eldoc-highlight-function-argument nil
-                        :underline t
-                        :foreground "green"
-                        :weight 'bold))
+  ;; (use-package go-eldoc
+  ;;   :ensure t
+  ;;   :hook (go-mode . go-eldoc-setup)
+  ;;   :config
+  ;;   (set-face-attribute 'eldoc-highlight-function-argument nil
+  ;;                       :underline t
+  ;;                       :foreground "green"
+  ;;                       :weight 'bold))
 
   ;; @see https://github.com/godoctor/godoctor
   (use-package godoctor
@@ -84,10 +84,6 @@
 
   ;; @see https://github.com/s-kostyaev/go-fill-struct
   (use-package go-fill-struct
-    :ensure t)
-
-  ;; @see https://github.com/syohex/emacs-go-impl
-  (use-package go-impl
     :ensure t)
 
   ;; @see https://github.com/nlamirault/gotest.el
@@ -104,9 +100,12 @@
     :ensure t
     :config (setq go-tag-args (list "-transform" "snakecase")))
 
-  (use-package flymake-golangci
+
+  ;; @see https://github.com/weijiangan/flycheck-golangci-lint
+  (use-package flycheck-golangci-lint
     :ensure t
-    :hook (go-mode . flymake-golangci-load))
+    :hook (go-mode . flycheck-golangci-lint-setup))
+
   )
 
 (provide 'init-go)

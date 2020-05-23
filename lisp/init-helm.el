@@ -38,10 +38,6 @@
   (use-package helm-gitignore
     :ensure t)
 
-  ;; @see https://github.com/vspinu/imenu-anywhere
-  (use-package imenu-anywhere
-    :ensure t)
-
   ;; @see https://github.com/emacs-helm/helm-descbinds
   (use-package helm-descbinds
     :ensure t

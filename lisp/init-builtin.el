@@ -98,28 +98,11 @@
   :ensure nil
   :hook(after-init . global-hl-line-mode))
 
-;; hideshow
-(use-package hideshow
-  :ensure nil
-  :diminish hs-minor-mode
-  :bind
-  (:map prog-mode-map
-   ("M--" . hs-toggle-hiding)
-   ("M-_" . hs-hide-all)
-   ("M-+" . hs-show-all))
-  :hook (prog-mode . hs-minor-mode)
-  :custom
-  (hs-special-modes-alist
-   (mapcar 'purecopy
-           '((c-mode "{" "}" "/[*/]" nil nil)
-             (c++-mode "{" "}" "/[*/]" nil nil)
-             (rust-mode "{" "}" "/[*/]" nil nil)
-             (go-mode "{" "}" "/[*/]" nil nil)))))
-
 ;; so-long
-;; (use-package so-long
-;;   :ensure nil
-;;   :hook (after-init .global-so-long-mode))
+(when (not (version< emacs-version "27"))
+  (use-package so-long
+    :ensure nil
+    :hook (after-init .global-so-long-mode)))
 
 ;; subword
 (use-package subword
@@ -142,20 +125,6 @@
 ;; windmove
 (use-package windmove
   :ensure nil)
-
-;; imenu
-(use-package imenu
-  :ensure nil)
-
-;; eldoc
-(use-package eldoc
-  :ensure nil
-  :diminish)
-
-;; flymake
-(use-package flymake
-  :ensure nil
-  :hook (eglot-mode . flymake-mode))
 
 (provide 'init-builtin)
 ;;; init-builtin.el nends here

@@ -131,16 +131,5 @@
   :init
   (setq helpful-max-buffers 10))
 
-;; @see https://github.com/bmag/imenu-list
-(use-package imenu-list
-  :ensure t)
-
-;; @see https://github.com/meqif/flymake-diagnostic-at-point
-(use-package flymake-diagnostic-at-point
-  :ensure t
-  :after flymake
-  :config
-  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
-
 (provide 'init-prog)
-;;; init-prog.el ends here
+;;; init-prog.el ends

@@ -34,6 +34,7 @@
 (general-define-key "M-;" 'evilnc-comment-or-uncomment-lines :wk "comment")
 (general-define-key "gd" 'xref-find-definitions :states '(normal visual motion) :keymaps 'override :wk "jump")
 (general-define-key "gb" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")
+(general-define-key "C-o" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")
 
 ;; space leader
 (leader-key "SPC" '(helm-M-x :wk "command line"))
@@ -54,7 +55,6 @@
   "bc" '(evil-buffer-new :wk "new buffer")
   "bd" '(evil-delete-buffer :wk "del buffer")
   "bm" '(helm-bookmarks :wk "bookmarks")
-  "br" '(helm-bookmark-rename :wk "rename bookmark")
   "bs" '(bookmark-set :wk "set bookmark")
   "bk" '(bookmark-delete :wk "delete bookmark")
   "bf" '(helm-filtered-bookmarks :wk "filter bookmarks")
@@ -89,21 +89,14 @@
   "fw" '(helm-swoop :wk "swoop")
   "fm" '(helm-mt :wk "multi term")
 
-  ;; fold
-  "fo" '(hs-toggle-hiding :wk "fold")
-  "f+" '(hs-show-all :wk "show all")
-  "f-" '(hs-hide-all :wk "hide all")
-
-  ;; imenu
-  "fa" '(helm-imenu-anywhere :wk "helm imenu")
-  "fi" '(imenu-list-smart-toggle :wk "imenu list")
-
   ;; git
   "fg" '(helm-ls-git-ls :wk "git")
   "f." '(helm-gitignore :wk "gitignore")
 
-  ;; help
-  "fy" '(quickrun :wk "quickrun"))
+  ;; run
+  "fy" '(quickrun :wk "quickrun")
+  )
+
 
 ;; help
 (leader-key "h" '(:wk "help")
@@ -134,7 +127,7 @@
   "ww" '(treemacs-select-window :wk "treemacs"))
 
 ;; dumb
-(leader-key "g" '("dumb jump")
+(leader-key "g" '(:wk "dumb jump")
   "gd" '(dumb-jump-go :wk "go")
   "go" '(dumb-jump-back :wk "back")
   "gw" '(dumb-jump-go-other-window :wk "go other window")
@@ -144,25 +137,36 @@
 ;;; language
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(leader-key "i" '(:wk "init")
+  "ir" '(:wk "rust & cargo")
+  "iri" '(cargo-process-init :wk "init")
+  "irn" '(cargo-process-new :wk "new"))
+
+(leader-key "l" '(:wk "lsp")
+  "lm" '(lsp-ui-imenu :wk "imenu")
+  "lr" '(lsp-rename :wk "rename")
+  "ld" '(lsp-find-definition :wk "definition")
+  "lf" '(lsp-find-references :wk "references")
+  "li" '(lsp-find-implementation :wk "implementation")
+  "lw" '(lsp-find-workspace :wk "workspace")
+
+  "lp" '(:wk "peek")
+  "lpd" '(lsp-ui-peek-find-definitions :wk "definitions")
+  "lpf" '(lsp-ui-peek-find-references :wk "references")
+  "lpi" '(lsp-ui-peek-find-implementation :wk "implementation")
+  "lpw" '(lsp-ui-peek-find-workspace-symbol :wk "workspace-symbol"))
+
 ;; golang
 (leader-key "m" '(:wk "golang")
   :keymaps 'go-mode-map 
-  "mi" '(:wk "import")
-  "mig" '(go-goto-imports :wk "goto imports")
-  "mia" '(go-import-add :wk "add import")
-  "mir" '(go-remove-unused-imports :wk "remove unused import")
+  "mm" '(go-run "run")
+  "mi" '(go-import-add :wk "add")
+  "mf" '(go-fill-struct :wk "fill struct")
 
-  "mx" '(:wk "action")
-  "mxx" '(go-run :wk "run")
-  "mxt" '(go-test-current-test :wk "test")
-  "mxf" '(go-run :wk "format")
-  "mxr" '(godoctor-rename :wk "rename")
-  "mxh" '(godoc-at-point :wk "godoc")
-  "mxi" '(go-impl :wk "impl")
-  "mxs" '(go-fill-struct :wk "fill struct")
-  "mxa" '(go-tag-add :wk "add tag")
-  "mxd" '(go-tag-remove :wk "remove tag")
-  "mxu" '(go-tag-refresh :wk "update tag")
+  "ma" '(:wk "tag")
+  "maa" '(go-tag-add :wk "add")
+  "mad" '(go-tag-remove :wk "remove")
+  "mar" '(go-tag-refresh :wk "refresh")
 
   "mt" '(:wk "test")
   "mtt" '(go-test-current-test :wk "current test")
@@ -176,86 +180,46 @@
   "mbp" '(go-test-current-project-benchmarks :wk "current project"))
 
 ;; rust
-(leader-key "m" '(:wk "rust")
+(leader-key "r" '(:wk "rust & cargo")
   :keymaps 'rust-mode-map
-  "mx" '(:wk "action")
-  "mxx" '(cargo-process-run :wk "run")
-  "mxt" '(cargo-process-test :wk "test")
-  "mxf" '(cargo-process-fmt :wk "format")
-  "mxr" '(eglot-rename :wk "rename")
-  "mxh" '(cargo-process-doc-open :wk "doc")
-  "mxc" '(rust-compile :wk "compile"))
+  "mm" '(rust-run :wk "run")
+  "mc" '(rust-compile :wk "build")
+  "mi" '(cargo-process-add :wk "add")
 
+  "ru" '(:wk "run")
+  "rub" '(cargo-process-run-bin :wk "bin")
+  "ruc" '(cargo-process-build :wk "compile")
+  "rue" '(cargo-process-run-example :wk "example")
+  "ruu" '(cargo-process-run :wk "run")
+
+  "rt" '(:wk "test")
+  "rtt" '(cargo-process-test :wk "test")
+  "rtc" '(cargo-process-current-test :wk "current")
+  "rtf" '(cargo-process-current-file-tests :wk "file")
+
+  "rb" '(cargo-process-bench :wk "bench")
+  )
 ;; version control
 (leader-key "v" '(:wk "version control")
-  "vv" '(:wk "operator") 
-  "vvi" '(magit-init :wk "init")
-  "vva" '(magit-stage-modified :wk "add all")
-  "vvb" '(magit-checkout :wk "checkout")
-  "vvc" '(magit-commit-create :wk "commit")
-  "vvd" '(magit-checkout-stage :wk "checkout stage")
-  "vve" '(magit-ediff :wk "ediff")
-  "vvf" '(magit-stage-file :wk "add file")
-  "vvs" '(magit-status-here :wk "status")
-  "vvo" '(magit-clone :wk "clone")
-  "vv." '(magit-gitignore-in-topdir :wk "ignore")
-  "vvv" '(magit-version :wk "version")
-
-  "vb" '(:wk "git branch") ;; branch
-  "vbo" '(magit-branch-checkout :wk "checkout")
-  "vbc" '(magit-branch-create :wk "create")
-  "vbd" '(magit-branch-delete :wk "delete")
-  "vbr" '(magit-branch-rename :wk "rename")
-
-  "vt" '(:wk "git tag") ;; tag
-  "vtc" '(magit-tag-create :wk "create")
-  "vtd" '(magit-tag-delete :wk "delete")
-  "vtr" '(magit-tag-release :wk "release")
-  "vtp" '(magit-tag-prune :wk "push")
-
-  "vm" '(:wk "merge & rebase") ;; merge
-  "vmi" '(magit-merge-into :wk "merge into")
-  "vmq" '(magit-merge-abort :wk "merge abort")
-  "vmv" '(magit-merge-preview :wk "merge preview")
-  "vme" '(magit-rebase-edit :wk "rebase edit")
-  "vms" '(magit-rebase-skip :wk "rebase skip")
-  "vma" '(magit-rebase-abort :wk "rebase abort")
-  "vmc" '(magit-rebase-continue :wk "rebase continue")
-  "vma" '(magit-rebase-interactive :wk "rebase interactive")
-
-  "vl" '(:wk "log") ;; log
-  "vla" '(magit-log-all :wk "all")
-  "vlh" '(magit-log-head :wk "head")
-
-  "vp" '(:wk "pull & push & fetch")
-  "vpb" '(magit-pull-branch :wk "pull branch")
-  "vps" '(magit-pull-from-upstream :wk "pull upstream")
-  "vpc" '(magit-push-current :wk "push current")
-  "vpo" '(magit-push-other :wk "push other")
-  "vpt" '(magit-push-tag :wk "push tag")
-  "vpa" '(magit-fetch-all :wk "fetch all")
-  "vpe" '(magit-fetch-branch :wk "fetch branch")
-
-  "vr" '(:wk "reset & revert")
-  "vrh" '(magit-reset-hard :wk "reset hard")
-  "vrs" '(magit-reset-soft :wk "reset soft")
-  "vrm" '(magit-reset-mixed :wk "reset mixed")
-  "vrc" '(magit-revert-and-commit :wk "revert commit")
-  "vrn" '(magit-revert-no-commit :wk "revert no commit")
-
-  "vh" '(:wk "helpinfo")
-  "vhb" '(magit-branch :wk "branch")
-  "vhc" '(magit-commit :wk "commit")
-  "vhd" '(magit-dispatch :wk "dispatch")
-  "vhe" '(magit-rebase :wk "rebase")
-  "vhf" '(magit-fetch :wk "fetch")
-  "vhl" '(magit-log :wk "log")
-  "vhm" '(magit-merge :wk "merge")
-  "vhp" '(magit-pull :wk "pull")
-  "vhr" '(magit-reset :wk "reset")
-  "vht" '(magit-tag :wk "tag")
-  "vhu" '(magit-push :wk "push")
-  "vhv" '(magit-revert :wk "revert")
+  "va" '(magit-stage :wk "stage")
+  "vb" '(magit-branch :wk "branch")
+  "vc" '(magit-commit :wk "commit")
+  "vd" '(magit-stash :wk "stash")
+  "ve" '(magit-reset :wk "reset")
+  "vf" '(magit-fetch :wk "fetch")
+  "vs" '(magit-status :wk "status")
+  "vn" '(magit-init :wk "init")
+  "vg" '(magit-checkout :wk "checkout")
+  "vo" '(magit-clone :wk "clone")
+  "v." '(magit-gitignore :wk "ignore")
+  "vt" '(magit-tag :wk "tag") 
+  "vm" '(magit-merge :wk "merge")
+  "mr" '(magit-rebase :wk "rebase")
+  "vl" '(magit-log :wk "log")
+  "vp" '(magit-pull :wk "push")
+  "vu" '(magit-push :wk "push")
+  "vk" '(magit-revert :wk "revert")
+  "vv" '(magit-version :wk "version")
   )
 
 (leader-key "p" '(:wk "project")
@@ -279,6 +243,4 @@
   )
 
 (provide 'init-keymap)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-keymap.el ends here
