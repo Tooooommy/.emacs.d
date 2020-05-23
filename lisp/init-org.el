@@ -41,45 +41,18 @@
   
   ;; @see https://github.com/marcinkoziej/org-pomodoro
   (use-package org-pomodoro
-    :ensure t)
+    :ensure t
+    :defer 3)
 
   ;; Babel
   (setq org-confirm-babel-evaluate nil
         org-src-fontify-natively t
         org-src-tab-acts-natively t)
 
-  (defvar load-language-list '((emacs-lisp . t)
-                               (perl . t)
-                               (python . t)
-                               (ruby . t)
-                               (js . t)
-                               (css . t)
-                               (sass . t)
-                               (C . t)
-                               (java . t)
-                               (plantuml . t)))
-
-  (use-package ob-go
-    :ensure t
-    :init (cl-pushnew '(go . t) load-language-list))
-
-  (use-package ob-rust
-    :ensure t
-    :init (cl-pushnew '(rust . t) load-language-list))
-
-  (use-package ob-ipython
-    :ensure t
-    :if (executable-find "jupyter")     ; DO NOT remove
-    :init (cl-pushnew '(ipython . t) load-language-list))
-
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               load-language-list)
-
-
   ;; @see https://github.com/integral-dw/org-superstar-mode
   (use-package org-superstar
     :ensure t
-    :defer t
+    :defer 3
     :hook (org-mode . org-superstar-mode)
     :init
     (setq org-superstar-prettify-item-bullets t
@@ -90,17 +63,17 @@
                                                    (?+ . ?➤)
                                                    (?- . ?—))))
 
-  (use-package evil-org
-    :ensure t
-    :defer t
-    :after org evil
-    :config
-    (add-hook 'org-mode-hook 'evil-org-mode)
-    (add-hook 'evil-org-mode-hook
-              (lambda ()
-                (evil-org-set-key-theme)))
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
+  ;; (use-package evil-org
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :after org evil
+  ;;   :config
+  ;;   (add-hook 'org-mode-hook 'evil-org-mode)
+  ;;   (add-hook 'evil-org-mode-hook
+  ;;             (lambda ()
+  ;;               (evil-org-set-key-theme)))
+  ;;   (require 'evil-org-agenda)
+  ;;   (evil-org-agenda-set-keys))
 
   ;; @see https://github.com/louietan/anki-editor
   (use-package anki-editor
@@ -132,15 +105,7 @@
   ;; @see https://github.com/snosov1/toc-org
   (use-package toc-org
     :ensure t
-    :hook (org-mode . toc-org-mode))
-
-  ;; @see https://github.com/lujun9972/org-preview-html
-  (use-package org-preview-html
-    :ensure t
-    :diminish)
-
-  )
+    :hook (org-mode . toc-org-mode)))
 
 (provide 'init-org)
-
-;;; init-org.el ends here
+;;; init-org.el

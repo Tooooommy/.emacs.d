@@ -2,7 +2,8 @@
 (use-package evil
   :ensure t 
   :init (setq evil-want-keybinding nil
-              evil-ex-substitute-global t)
+              evil-ex-substitute-global t
+              evil-escape-mode 1)
   :hook (after-init . evil-mode)
   :bind
   (:map evil-motion-state-map
@@ -39,7 +40,7 @@
   (use-package evil-nerd-commenter
     :ensure t)
 
-  ;; @see https://github.com/syl20bnr/evil-escape evil-escape
+  ;; @see https://github.com/syl20bnr/evil-escape
   (use-package evil-escape
     :ensure t 
     :diminish
@@ -59,11 +60,7 @@
     (evil-define-key 'visual evil-mc-key-map
       "A" #'evil-mc-make-cursor-in-visual-selection-end
       "I" #'evil-mc-make-cursor-in-visual-selection-beg))
-
-  ;; @see ....
-  (use-package treemacs-evil
-    :ensure t
-    :after treemacs evil))
+  )
 
 (provide 'init-evil)
 

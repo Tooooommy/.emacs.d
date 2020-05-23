@@ -39,7 +39,12 @@
             git-commit-post-finish
             magit-post-stage
             magit-post-unstage)
-           . treemacs-magit--schedule-update)))
+           . treemacs-magit--schedule-update))
+
+  (use-package treemacs-evil
+    :ensure t
+    :after evil)
+  )
 
 (provide 'init-treemacs)
 ;;; init-treemacs.el ends here

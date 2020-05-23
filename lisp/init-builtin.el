@@ -66,8 +66,7 @@
 (add-hook 'after-init-hook #'my/protected-buffers)
 
 ;; vc 
-;;(setq auto-revert-check-vc-info t)
-(setq auto-revert-mode 1)
+(auto-revert-mode 1)
 
 ;; ido
 (use-package ido
@@ -104,23 +103,28 @@
     :ensure nil
     :hook (after-init .global-so-long-mode)))
 
-;; subword
-(use-package subword
+;; eldoc
+(use-package eldoc
   :ensure nil
-  :hook (after-init . global-subword-mode))
+  :diminish)
+
+;; subword
+;; (use-package subword
+;;   :ensure nil
+;;   :hook (after-init . global-subword-mode))
 
 ;; paren
-(use-package paren
-  :ensure nil
-  :hook (after-init . show-paren-mode)
-  :config
-  (setq show-paren-when-point-inside-paren t
-        show-paren-when-point-in-periphery t))
+;; (use-package paren
+;;   :ensure nil
+;;   :hook (after-init . show-paren-mode)
+;;   :config
+;;   (setq show-paren-when-point-inside-paren t
+;;         show-paren-when-point-in-periphery t))
 
 ;; autorevert
-(use-package autorevert
-  :ensure nil
-  :hook (after-init . global-auto-revert-mode))
+;; (use-package autorevert
+;;   :ensure nil
+;;   :hook (after-init . global-auto-revert-mode))
 
 ;; windmove
 (use-package windmove
