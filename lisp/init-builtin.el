@@ -5,11 +5,6 @@
           (or user-login-name "")	
           " - Emacs love you!\n\n"))
 
-;; Suppress GUI features
-(setq use-file-dialog nil)
-(setq use-dialog-box nil)
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message t)
 (setq-default initial-scratch-message (scratch-buffer-message))
 (setq initial-major-mode 'fundamental-mode)
 
@@ -17,13 +12,6 @@
 (cd "~/")                                         ; 切换到主目录
 (display-time-mode 1)                             ; 在modeline 加上时间
 (fset 'yes-or-no-p 'y-or-n-p)                     ; 改变询问字符
-
-;; @see https://github.com/technomancy/better-defaults
-;; 默认设置
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(horizontal-scroll-bar-mode -1)
 
 ;; 系统编码
 (when (fboundp 'set-charset-priority)
@@ -40,6 +28,12 @@
 (set-selection-coding-system 'utf-8)
 (modify-coding-system-alist 'process "*" 'utf-8)
 
+;; Suppress GUI features
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-echo-area-message t)
+
 ;; 字体设置
 (set-face-attribute 'default  nil :font "Source Code Pro Medium 12")
 ;; (set-fontset-font t 'latin "Noto Sans")
@@ -50,8 +44,8 @@
       icon-title-format frame-title-format)
 
 ;; 初始化调整窗口
-;; (setq frame-inhibit-implied-resize t
-;;       frame-resize-pixelwise t)
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
 
 ;; 显示窗口
 (setq window-divider-default-places t
@@ -118,7 +112,10 @@
   :ensure nil
   :defer t)
 
-
+;; @see https://github.com/technomancy/better-defaults
+;; 默认设置
+(use-package better-defaults
+  :ensure t)
 
 (provide 'init-builtin)
 ;;; init-builtin.el nends here

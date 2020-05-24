@@ -29,11 +29,11 @@
   (general-evil-setup)
   (general-create-definer leader-key :prefix "SPC" :states '(normal visual motion) :keymaps 'override :wk "leader")
 
+  
   ;; emacs key bind like
   (general-define-key [f11] 'helpers/fullscreen)
   (general-define-key "M-x" 'helm-M-x :keymaps 'override) ;; 重新绑定
   (general-define-key "C-x C-f" 'helm-find-files :keymaps 'override)
-  (general-define-key "M-;" 'evilnc-comment-or-uncomment-lines :wk "comment")
   (general-define-key "gd" 'xref-find-definitions :states '(normal visual motion) :keymaps 'override :wk "jump")
   (general-define-key "gb" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")
   (general-define-key "C-o" 'xref-pop-marker-stack :states '(normal visual motion) :keymaps 'override :wk "back")

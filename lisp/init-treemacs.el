@@ -6,7 +6,6 @@
              treemacs-filewatch-mode
              treemacs-fringe-indicator-mode
              treemacs-git-mode)
-  :bind ("M-0" . treemacs-select-window)
   :config 
   (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
         treemacs-is-never-other-window         nil
@@ -46,7 +45,6 @@
 
   (use-package treemacs-evil
     :ensure t
-    :defer 3
     :after evil)
   )
 

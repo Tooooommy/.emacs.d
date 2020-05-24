@@ -117,8 +117,8 @@
     :defer 3
     :after treemacs
     :init (lsp-treemacs-sync-mode 1))
+
   )
 
 (provide 'init-lsp)
 ;;; init-lsp.el
-

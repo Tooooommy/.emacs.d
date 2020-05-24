@@ -10,6 +10,8 @@
   (:map evil-motion-state-map
    ("C-u" . scroll-down-command)
    :map evil-insert-state-map
+   ([escape] . evil-normal-state)
+   :map evil-visual-state-map
    ([escape] . evil-normal-state))
 
   :config 
@@ -69,6 +71,4 @@
   )
 
 (provide 'init-evil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; init-evil.el ends here
+;; init-evil.el

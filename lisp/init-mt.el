@@ -2,8 +2,6 @@
 (use-package multi-term
   :ensure t
   :after t
-  :config
-
   ;; @see https://github.com/dfdeshom/helm-mt
   (use-package helm-mt
     :ensure t
