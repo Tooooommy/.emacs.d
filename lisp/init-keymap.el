@@ -161,7 +161,7 @@
   ;; golang
   (leader-key "m" '(:wk "golang")
     :keymaps 'go-mode-map 
-    "mm" '(go-run "run")
+    "mm" '(go-run :wk "run")
     "mi" '(go-import-add :wk "add")
     "mf" '(go-fill-struct :wk "fill struct")
 
