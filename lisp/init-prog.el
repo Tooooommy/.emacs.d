@@ -101,14 +101,15 @@
 (use-package aggressive-indent
   :defer 3
   :ensure t 
-  :hook (after-init . global-aggressive-indent-mode)
-  :config
-  (add-to-list
-   'aggressive-indent-dont-indent-if
-   '(and (derived-mode-p 'c++-mode)
-         (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
-                             (thing-at-point 'line))))))
+  :hook (after-init . global-aggressive-indent-mode))
+  ;; :config
+  ;; (add-to-list
+  ;;  'aggressive-indent-dont-indent-if
+  ;;  '(and (derived-mode-p 'c++-mode)
+  ;;        (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
+  ;;                            (thing-at-point 'line))))))
 
+;; smex M-x
 ;; @see https://github.com/nonsequitur/smex/
 (use-package smex
   :defer 3
@@ -139,5 +140,7 @@
   :init
   (setq helpful-max-buffers 10))
 
+
 (provide 'init-prog)
+
 ;;; init-prog.el ends

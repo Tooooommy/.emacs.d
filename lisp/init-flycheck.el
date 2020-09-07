@@ -18,16 +18,15 @@
   (when (fboundp 'define-fringe-bitmap)
     (define-fringe-bitmap 'flycheck-fringe-bitmap-arrow
       [16 48 112 240 112 48 16] nil nil 'center))
-  (flycheck-redefine-standard-error-levels "⏴" 'flycheck-fringe-bitmap-arrow)
+  (flycheck-redefine-standard-error-levels "⏴" 'flycheck-fringe-bitmap-arrow))
 
-  ;; @see https://github.com/flycheck/flycheck-pos-tip
-  (use-package flycheck-pos-tip
-    :ensure t
-    :defer 3
-    :defines flycheck-pos-tip-timeout
-    :hook (global-flycheck-mode . flycheck-pos-tip-mode)
-    :config (setq flycheck-pos-tip-timeout 30))
-  )
+;; @see https://github.com/flycheck/flycheck-pos-tip
+(use-package flycheck-pos-tip
+  :ensure t
+  :defer 3
+  :defines flycheck-pos-tip-timeout
+  :hook (global-flycheck-mode . flycheck-pos-tip-mode)
+  :config (setq flycheck-pos-tip-timeout 30))
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends

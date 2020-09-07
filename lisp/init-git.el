@@ -18,4 +18,5 @@
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (provide 'init-git)
+
 ;;; init-git.el

@@ -1,8 +1,7 @@
 ;; @see https://github.com/Silex/docker.el
 (use-package docker
   :ensure t
-  :defer 3
-  )
+  :defer 3)
 
 ;; @see https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode

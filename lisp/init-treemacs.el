@@ -20,33 +20,32 @@
   (pcase (cons (not (null (executable-find "git")))
                (not (null treemacs-python-executable)))
     (`(t . t) (treemacs-git-mode 'deferred))
-    (`(t . _) (treemacs-git-mode 'simple)))
+    (`(t . _) (treemacs-git-mode 'simple))))
 
-  (use-package treemacs-projectile
-    :ensure t
-    :defer 3
-    :after treemacs projectile)
+(use-package treemacs-projectile
+  :ensure t
+  :defer 3
+  :after treemacs projectile)
 
-  (use-package treemacs-icons-dired
-    :ensure t
-    :defer 3
-    :after treemacs dired
-    :hook (after-init . treemacs-icons-dired-mode))
+(use-package treemacs-icons-dired
+  :ensure t
+  :defer 3
+  :after treemacs dired
+  :hook (after-init . treemacs-icons-dired-mode))
 
-  (use-package treemacs-magit
-    :defer 3
-    :after magit
-    :commands treemacs-magit--schedule-update
-    :hook ((magit-post-commit
-            git-commit-post-finish
-            magit-post-stage
-            magit-post-unstage)
-           . treemacs-magit--schedule-update))
+(use-package treemacs-magit
+  :defer 3
+  :after magit
+  :commands treemacs-magit--schedule-update
+  :hook ((magit-post-commit
+          git-commit-post-finish
+          magit-post-stage
+          magit-post-unstage)
+         . treemacs-magit--schedule-update))
 
-  (use-package treemacs-evil
-    :ensure t
-    :after evil)
-  )
+(use-package treemacs-evil
+  :ensure t
+  :after evil)
 
 (provide 'init-treemacs)
 ;;; init-treemacs.el ends here

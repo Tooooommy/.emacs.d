@@ -63,63 +63,51 @@
 
 
   (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook #'gofmt-before-save)
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
-  ;; @see https://github.com/syohex/emacs-go-eldoc
-  ;; (use-package go-eldoc
-  ;;   :ensure t
-  ;;   :hook (go-mode . go-eldoc-setup)
-  ;;   :config
-  ;;   (set-face-attribute 'eldoc-highlight-function-argument nil
-  ;;                       :underline t
-  ;;                       :foreground "green"
-  ;;                       :weight 'bold))
-
-  ;; @see https://github.com/godoctor/godoctor
-  (use-package godoctor
-    :ensure t
-    :defer 3
-    )
-
-  ;; @see https://github.com/benma/go-dlv.el
-  (use-package go-dlv
-    :ensure t
-    :defer 3
-    )
-
-  ;; @see https://github.com/s-kostyaev/go-fill-struct
-  (use-package go-fill-struct
-    :ensure t
-    :defer 3
-    )
-
-  ;; @see https://github.com/nlamirault/gotest.el
-  (use-package gotest
-    :ensure t
-    :defer 3
-    )
-
-  ;; @see https://github.com/s-kostyaev/go-gen-test
-  (use-package go-gen-test
-    :ensure t
-    :defer 3
-    :bind (:map go-mode-map
-           ("C-c t g" . go-gen-test-dwim)))
-
-  ;; @see https://github.com/brantou/emacs-go-tag
-  (use-package go-tag
-    :ensure t
-    :defer 3
-    :config (setq go-tag-args (list "-transform" "snakecase")))
-
-
-  ;; @see https://github.com/weijiangan/flycheck-golangci-lint
-  (use-package flycheck-golangci-lint
-    :ensure t
-    :defer 3
-    :hook (go-mode . flycheck-golangci-lint-setup))
-
+;; @see https://github.com/godoctor/godoctor
+(use-package godoctor
+  :ensure t
+  :defer 3
   )
+
+;; @see https://github.com/benma/go-dlv.el
+(use-package go-dlv
+  :ensure t
+  :defer 3
+  )
+
+;; @see https://github.com/s-kostyaev/go-fill-struct
+(use-package go-fill-struct
+  :ensure t
+  :defer 3
+  )
+
+;; @see https://github.com/nlamirault/gotest.el
+(use-package gotest
+  :ensure t
+  :defer 3
+  )
+
+;; @see https://github.com/s-kostyaev/go-gen-test
+(use-package go-gen-test
+  :ensure t
+  :defer 3
+  :bind (:map go-mode-map
+         ("C-c t g" . go-gen-test-dwim)))
+
+;; @see https://github.com/brantou/emacs-go-tag
+(use-package go-tag
+  :ensure t
+  :defer 3
+  :config (setq go-tag-args (list "-transform" "snakecase")))
+
+
+;; @see https://github.com/weijiangan/flycheck-golangci-lint
+(use-package flycheck-golangci-lint
+  :ensure t
+  :defer 3
+  :hook (go-mode . flycheck-golangci-lint-setup))
 
 (provide 'init-go)
 ;;; init-go.el ends here

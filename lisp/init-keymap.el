@@ -242,9 +242,7 @@
     "oc" '(helm-org-capture-templates :wk "capture")
     "oh" '(helm-org-in-buffer-headings :wk "headings")
     "op" '(org-pomodoro :wk "pomodoro")
-    )
-
-  )
+    ))
 
 (provide 'init-keymap)
 ;;; init-keymap.el ends here

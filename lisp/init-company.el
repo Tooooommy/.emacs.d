@@ -46,23 +46,23 @@
             prefix))
       (funcall fun command arg)))
 
-  (advice-add #'company-yasnippet :around #'company-yasnippet/disable-after-dot)
+  (advice-add #'company-yasnippet :around #'company-yasnippet/disable-after-dot))
 
-  ;; @see https://github.com/raxod502/prescient.el
-  (use-package company-prescient
-    :ensure t
-    :defer 3
-    :hook (company-mode . company-prescient-mode))
+;; @see https://github.com/raxod502/prescient.el
+(use-package company-prescient
+  :ensure t
+  :defer 3
+  :hook (company-mode . company-prescient-mode))
 
-  ;; @see https://github.com/expez/company-quickhelp
-  (use-package company-quickhelp
-    :ensure t 
-    :defer 3
-    :defines company-quickhelp-delay
-    :bind (:map company-active-map
-           ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
-    :hook (global-company-mode . company-quickhelp-mode)
-    :init (setq company-quickhelp-delay 0.5)))
+;; @see https://github.com/expez/company-quickhelp
+(use-package company-quickhelp
+  :ensure t 
+  :defer 3
+  :defines company-quickhelp-delay
+  :bind (:map company-active-map
+         ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
+  :hook (global-company-mode . company-quickhelp-mode)
+  :init (setq company-quickhelp-delay 0.5))
 
 (provide 'init-company)
 ;;; init-company.el ends here

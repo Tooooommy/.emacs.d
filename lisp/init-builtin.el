@@ -36,8 +36,6 @@
 
 ;; 字体设置
 (set-face-attribute 'default  nil :font "Source Code Pro Medium 12")
-;; (set-fontset-font t 'latin "Noto Sans")
-;; (set-frame-font "Source Code Pro 12")
 
 ;; 编辑器标题
 (setq frame-title-format '("Tooooommy Emacs - %b")

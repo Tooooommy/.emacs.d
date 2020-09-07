@@ -11,16 +11,15 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init
-  (setq markdown-command "multimarkdown")
+  (setq markdown-command "multimarkdown"))
 
-  :config
-  ;; @see https://github.com/ardumont/markdown-toc
-  (use-package markdown-toc
-    :ensure t
-    :defer 3
-    :after markdown-mode
-    :bind (:map markdown-mode-command-map
-           ("r" . markdown-toc-generate-or-refresh-toc))))
+;; @see https://github.com/ardumont/markdown-toc
+(use-package markdown-toc
+  :ensure t
+  :defer 3
+  :after markdown-mode
+  :bind (:map markdown-mode-command-map
+         ("r" . markdown-toc-generate-or-refresh-toc)))
 
 
 (provide 'init-markdown)

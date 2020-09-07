@@ -1,0 +1,15 @@
+* Default
+** demo
+ - path :: ~/go/src/demo
+** spacemacs
+ - path :: ~/spacemacs
+** org
+ - path :: ~/Documents/org
+** leetcode
+ - path :: ~/go/src/leetcode
+** falv58com
+ - path :: ~/go/src/falv58com
+** rust_wk
+ - path :: ~/rust_wk
+** yapi
+ - path :: ~/go/src/yapi
